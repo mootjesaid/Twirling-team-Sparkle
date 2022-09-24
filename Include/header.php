@@ -8,6 +8,9 @@
     <title>Twirling Team Sparkle Header</title>
 </head>
 <body>
-
+<div class='c-avatar'>
+    <img class='c-avatar__image' src='Im' alt=''>
+    <span class='c-avatar__status'></span>
+</div>
 </body>
 </html>

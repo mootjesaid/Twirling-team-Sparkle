@@ -1,9 +1,12 @@
+
 .navbar-brand{
-
     width: 200px;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
-
+    height: 10%;
 }
+
+.navbar-a{
+    width: 200px;
+    height: 10%;
+}
+
+
