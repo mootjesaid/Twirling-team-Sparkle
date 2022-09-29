@@ -18,14 +18,5 @@
             <script>
                 feather.replace()
             </script>
-
-        </div>
-
-
-
-
-
-
-
     </body>
     </html>

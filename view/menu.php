@@ -23,3 +23,8 @@
             <li><a href="#about"><i class="icon" data-feather="user"></i>Klanten</a></li>
         </ul>
     </div>
+    <script>
+        feather.replace()
+    </script>
+
+</div>
