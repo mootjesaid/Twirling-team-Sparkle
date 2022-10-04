@@ -24,15 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `medewerker`
+-- Tabelstructuur voor tabel `user`
 --
 
-CREATE TABLE `medewerker` (
+CREATE TABLE `user` (
   `id` int(10) NOT NULL,
   `naam` varchar(80) NOT NULL,
   `titel` varchar(75) NOT NULL,
   `nummer` varchar(15) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `rol` int(1) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
