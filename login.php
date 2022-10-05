@@ -5,12 +5,12 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="public/assets/style.css">
         <title>Twirling Team Sparkle</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
-        <?php include('./view/header.php'); ?>
-        <?php include ('./view/menu.php'); ?>
+        <?php include('./views/header.view.php'); ?>
+        <?php include('./views/menu.php'); ?>
     <body>
 
     </body>
