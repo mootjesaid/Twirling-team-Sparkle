@@ -5,11 +5,13 @@
 
 class Model extends Database
 {
-    protected $table = "user";
 
     function __construct()
     {
-        // code...
+        if(!property_exists($this, 'table'))
+        {
+            $this->table = strtolower($this::class) . "s";
+        }
     }
 
 
