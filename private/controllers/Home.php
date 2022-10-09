@@ -10,9 +10,11 @@ class Home extends Controller
         //code..
         $user = new User();
 
-        $data = $user->findAll();
+//        $user->insert($arr);
+//        $user->update(4,$arr);
+//        $user->delete(5);
 
-        //$data = $user->where('email', 'janvdboer@hotmail.com');
+        $data = $user->findAll();
 
         $this->view('home',['rows'=>$data]);
     }
