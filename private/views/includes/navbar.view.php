@@ -1,7 +1,7 @@
 <div class=" d-flex flex-column mb-2">
 
-    <div class="">
-        <ul class="px-0">
+    <div class="menu">
+        <ul class="menu px-0">
             <div class="info p-2 align-items-center ">
                 <div class=" d-flex flex-row m-3">
                     <div class="pe-3  ">

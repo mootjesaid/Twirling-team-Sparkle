@@ -10,7 +10,7 @@ class Model extends Database
     {
         if(!property_exists($this, 'table'))
         {
-            $this->table = strtolower($this::class) . "s";
+            $this->table = strtolower($this::class);
         }
     }
 
@@ -26,8 +26,11 @@ class Model extends Database
 
     public function findAll()
     {
-        $query = "select * from $this->table ";
-        return $this->query($query);
+        $query = "select * from $this->table";
+        $data = $this->query($query);
+
+        return $data;
+
     }
 
     public function insert($data)
@@ -36,7 +39,7 @@ class Model extends Database
         $columns = implode(',', $keys);
         $values = implode(',:', $keys);
 
-        $query = "insert into $this->table ($columns) values (:$values)";
+        $query = "insert into $this->table($columns) values (:$values)";
 
         return $this->query($query,$data);
     }

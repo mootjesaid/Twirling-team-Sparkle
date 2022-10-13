@@ -1,5 +1,7 @@
+/*
 body{
-
+width: 100%;
+    height: 150vh;
 }
 
 /*Header*/
@@ -35,6 +37,8 @@ body{
 .header{
     background-color: #120D91;
     height: 66px;
+    position: fixed;
+    width: 100%;
 }
 
 input{
@@ -43,32 +47,32 @@ input{
 }
 
 /*Navbar*/
-ul {
+.menu ul {
     list-style-type: none;
     padding: 0;
     margin-right: 4rem;
     background-color: black;
     position: fixed;
+    margin-top: 66px;
     height: 100%;
-    overflow: auto;
     font-family: 'Lato', sans-serif;
     font-size: 15pt;
 }
 
 
-li a {
+.menu li a {
     display: block;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-li a.active {
+.menu li a.active {
     background-color: #514AFF;
     color: white;
 }
 
-li a:hover:not(.active) {
+.menu li a:hover:not(.active) {
     background-color: #555;
     color: white;
 }

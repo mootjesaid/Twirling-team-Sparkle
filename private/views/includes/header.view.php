@@ -8,7 +8,10 @@
     <link rel="stylesheet" type="text/css" href="<?=ROOT?>/assets/style.css">
     <title>Twirling Team Sparkle</title>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+
 </head>
 <body>
 <header class="header">
@@ -28,9 +31,6 @@
                 <div class='c-avatar'>
                     <img class='c-avatar__image' src='https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' alt=''>
                     <span class='c-avatar__status'></span>
-                    <script>
-                        feather.replace()
-                    </script>
                 </div>
             </div>
         </div>
