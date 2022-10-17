@@ -7,12 +7,14 @@ class Lid extends Model
 {
 
     protected $allowedColumns = [
-        'naam',
+        'voornaam',
+        'achternaam',
         'adres',
         'woonplaats',
         'foto',
         'telefoonnummer',
         'email',
+        'datum'
     ];
 
 
@@ -20,28 +22,30 @@ class Lid extends Model
     {
         $this->errors = array();
 
-        //check for name
-        if(empty($DATA['naam']) || !preg_match('/^[a-zA-Z]+$/', $DATA['naam']))
+        //check voornaam
+        if(empty($DATA['voornaam']) || !preg_match('/^[a-zA-Z]+$/', $DATA['voornaam']))
         {
-            $this->errors['naam'] = "Naam mag alleen uit letters bestaan";
+            $this->errors['naam'] = "Voor naam mag alleen uit letters bestaan";
         }
 
+        //check for achternaam
+        if(empty($DATA['achternaam']) || !preg_match('/^[a-zA-Z]+$/', $DATA['achternaam']))
+        {
+            $this->errors['achternaam'] = "Achter naam mag alleen uit letters bestaan";
+        }
+
+        //check woonplaats
         if(empty($DATA['woonplaats']) || !preg_match('/^[a-zA-Z]+$/', $DATA['woonplaats']))
         {
             $this->errors['woonplaats'] = "Woonplaats mag alleen uit letters bestaan";
         }
 
-        //check for email
+        //check email
         if(empty($DATA['email']) || !filter_var($DATA['email'],FILTER_VALIDATE_EMAIL))
         {
-            $this->errors['email'] = "dit e-mail is niet geldig";
+            $this->errors['email'] = "Vul een geldig e-mail adres in";
         }
 
-        //check if email exists
-        if($this->where('email',$DATA['email']))
-        {
-            $this->errors['email'] = "Dit e-mail adress word gebruikt ";
-        }
 
 
 

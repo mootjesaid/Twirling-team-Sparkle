@@ -5,8 +5,9 @@
 
 class Model extends Database
 {
+    public $errors = array();
 
-    function __construct()
+    public function __construct()
     {
         if(!property_exists($this, 'table'))
         {
@@ -35,11 +36,33 @@ class Model extends Database
 
     public function insert($data)
     {
+        //remove unwanted columns
+        if(property_exists($this, 'allowedColumns'))
+        {
+            foreach($data as $key => $column)
+            {
+                if(!in_array($key, $this->allowedColumns))
+                {
+                    unset($data[$key]);
+                }
+            }
+
+        }
+
+        //run functions before insert
+        if(property_exists($this, 'beforeInsert'))
+        {
+            foreach($this->beforeInsert as $func)
+            {
+                $data = $this->$func($data);
+            }
+        }
+
         $keys = array_keys($data);
         $columns = implode(',', $keys);
         $values = implode(',:', $keys);
 
-        $query = "insert into $this->table($columns) values (:$values)";
+        $query = "insert into $this->table ($columns) values (:$values)";
 
         return $this->query($query,$data);
     }
