@@ -26,3 +26,9 @@ function esc($var)
 {
     return htmlspecialchars($var);
 }
+
+function get_date($date)
+{
+
+    return date("Y-m-d",strtotime($date));
+}

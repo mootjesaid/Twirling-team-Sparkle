@@ -12,8 +12,13 @@ class Leden extends Controller
 
         $data = $lid->findAll();
 
+        $crumbs[] = ['Dashboard','home'];
+        $crumbs[] = ['Leden','leden'];
 
-        $this->view('leden',['rows'=>$data]);
+        $this->view('leden',[
+            'crumbs'=>$crumbs,
+            'rows'=>$data
+        ]);
     }
 
     public function add()
@@ -38,9 +43,13 @@ class Leden extends Controller
             }
         }
 
+        $crumbs[] = ['Dashboard',''];
+        $crumbs[] = ['Leden','leden'];
+        $crumbs[] = ['Add','leden/add'];
+
         $this->view('leden.add',[
             'errors'=>$errors,
-
+            'crumbs'=>$crumbs,
         ]);
     }
 

@@ -14,7 +14,7 @@ class Lid extends Model
         'foto',
         'telefoonnummer',
         'email',
-        'datum'
+        'datum',
     ];
 
 

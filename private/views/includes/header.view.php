@@ -13,7 +13,7 @@
 
 
 </head>
-<body>
+<body style=" background-color: #EEEEEE;">
 <header class="header">
     <div class="container-fluid">
         <div class="header d-flex align-items-center">

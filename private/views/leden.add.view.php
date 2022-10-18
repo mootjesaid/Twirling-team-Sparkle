@@ -23,7 +23,7 @@
             <input class="my-2 form-control"  value="<?=get_var('adres')?>" type="text" name="adres" placeholder="adres" >
             <input class="my-2 form-control" value="<?=get_var('woonplaats')?>" type="text" name="woonplaats" placeholder="Woonplaats" >
             <input class="my-2 form-control" type="number" value="<?=get_var('telefoonnummer')?>" name="telefoonnummer" placeholder="Telefoonnummer" >
-            <input class="my-2 form-control" type="email" value="<?//=get_var('email')?><!--" name="email" placeholder="Email" >-->
+            <input class="my-2 form-control" type="email" value="<?=get_var('email')?>" name="email" placeholder="Email">
 
             <br>
             <button class="btn btn-primary float-end">Add User</button>

@@ -1,6 +1,25 @@
 
 body{
 width: 100%;
+
+}
+.title{
+
+}
+
+.container-bg{
+    background: white;
+    width: 1225px;
+    margin-left: 280px;
+}
+
+.card-groub-bg
+{
+    width: 1200px;
+}
+
+#leden{
+    width: 1175px;
 }
 
 /*Header*/
@@ -78,7 +97,7 @@ input{
     background-color: #555;
     color: white;
 }
-.icon{
+.icon-nav{
     padding-bottom: 6px;
 }
 
@@ -86,4 +105,19 @@ input{
     background-color: #191919
 ;
     color: white;
+}
+
+.btn_add{
+    background: #514AFF;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    width: 125px;
+}
+
+.icon{
+    color: #514AFF;
+    stroke-width: 2px;
+    height: 40px;
+    margin-right: 5px;
 }
