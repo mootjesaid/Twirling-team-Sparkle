@@ -1,16 +1,21 @@
 <?php $this->view('includes/header')?>
 <?php $this->view('includes/navbar')?>
 
-    <div class="title d-flex justify-content-between mb-3" style="margin-top: 100px; width: 80%; margin-left: 280px">
-        <div class="p-2">Flex item 1</div>
-        <div class="p-2 ">
+    <div class="container-bg action-bar d-flex justify-content-between" style="margin-top: 100px;">
+        <div class="d-flex align-items-center p-2">
+            <div class="icon-container d-flex align-items-center justify-content-center">
+                <i class="icon2" data-feather="table"></i>
+            </div>
+            <div class="d-flex title justify-content-center">
+                Leden
+            </div>
+        </div>
+        <div class="d-flex align-items-center p-2 ">
             <?php $this->view('includes/crumbs',['crumbs'=>$crumbs])?>
         </div>
     </div>
 
-    <div class="title d-flex justify-content-between mb-3" style="margin-top: 100px; width: 80%; margin-left: 280px">
-        <div class="p-2">Flex item 1</div>
-        <div class="p-2 ">
+    <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
             <i class="icon" data-feather="user"></i>
             <a href="<?=ROOT?>/leden/add">
                 <button class="btn_add p-2"></i>Nieuwe lid</button>
@@ -19,7 +24,7 @@
     </div>
 
     <div class="container-bg">
-        <div class="container-fluid p-4 shadow" <!--style="width: 80%; margin-left: 280px-->">
+        <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
 
             <div class="card-group">
 
