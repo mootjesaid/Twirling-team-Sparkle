@@ -26,7 +26,7 @@
     <div class="container-bg">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
 
-            <div class="card-group">
+
 
                 <table id="leden" class="table table-striped">
                     <thead>
@@ -89,7 +89,8 @@
                 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
                 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
                 <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
-                <script src="<?=ROOT?>/assets/app.js"></script>        </div>
+                <script src="<?=ROOT?>/assets/app.js"></script>
+                </div>
 
         </div>
     </div>
