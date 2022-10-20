@@ -4,7 +4,7 @@ width: 100%;
 
 }
 .title{
-    font-size: 20pt;
+    font-size: 19pt;
     font-weight: bold;
     font-family: 'Lato', sans-serif;
     padding-left: 15px;
@@ -145,7 +145,7 @@ input{
 }
 
 .icon2{
-    color: #514AFF;
+    color: #DEB900;
     stroke-width: 2px;
     height: 60px;
 }

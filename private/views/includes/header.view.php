@@ -16,7 +16,7 @@
 <body style=" background-color: #EEEEEE;">
 <header class="header">
     <div class="container-fluid">
-        <div class="header d-flex align-items-center">
+        <div class="d-flex align-items-center">
             <div class="p-2">
                 <div class=" navbar-brand  align-items-center">
                     <img src="http://localhost/Twirling-team-Sparkle/public/assets/Images/sparkle_twirling.png" class="img-logo">

@@ -69,9 +69,9 @@ class Model extends Database
 
     public function update($id,$data)
     {
-        $str = " ";
-        foreach ($data as $key => $value)
-        {
+        $str = "";
+        foreach ($data as $key => $value) {
+            // code...
             $str .= $key. "=:". $key.",";
         }
 
@@ -79,6 +79,7 @@ class Model extends Database
 
         $data['id'] = $id;
         $query = "update $this->table set $str where id = :id";
+
         return $this->query($query,$data);
     }
 

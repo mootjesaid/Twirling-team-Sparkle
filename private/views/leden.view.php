@@ -55,8 +55,13 @@
                                 <td><?=$row->email?></td>
                                 <td><?=get_date($row->datum)?></td>
                                 <td>
-                                    <button class="btn-sm btn btn-info"><i>edit</i></button>
-                                    <button class="btn-sm btn btn-danger"><i>delete</i></button>
+                                    <a href="<?=ROOT?>/leden/edit/<?=$row->id?>">
+                                        <button class="btn-sm btn btn-info"><i>edit</i></button>
+                                    </a>
+
+                                    <a href="<?=ROOT?>/leden/delete">
+                                        <button class="btn-sm btn btn-danger"><i>delete</i></button>
+                                    </a>
                                 </td>
 
                                 <!-- <td>

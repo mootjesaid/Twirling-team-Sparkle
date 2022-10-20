@@ -1,13 +1,27 @@
 <?php $this->view('includes/header')?>
 <?php $this->view('includes/navbar')?>
 
+<div class="container-bg action-bar d-flex justify-content-between" style="margin-top: 100px;">
+    <div class="d-flex align-items-center p-2">
+        <div class="icon-container d-flex align-items-center justify-content-center">
+            <i class="icon2" data-feather="table"></i>
+        </div>
+        <div class="d-flex title justify-content-center">
+            Lid Toevoegen
+        </div>
+    </div>
+    <div class="d-flex align-items-center p-2 ">
+        <?php $this->view('includes/crumbs',['crumbs'=>$crumbs])?>
+    </div>
+</div>
 
-<div class="container-fluid">
-    <form method="post">
-        <div class="p-4 mx-auto mr-4 shadow rounded" style="margin-top: 50px;width:100%;max-width: 340px;">
-            <img src="<?=ROOT?>/assets/Images/sparkle_twirling.png" class="d-block mx-auto rounded-circle" style="width:200px;">
-            <h3>Add User</h3>
+<div class="container-bg">
+    <form class="shadow-sm" method="post">
 
+        <div class="p-2  mr-4" style="margin-top: 50px; width: 100%">
+            <div class="icon-container d-flex align-items-center justify-content-center">
+                <i class="icon2" data-feather="user-plus"></i>
+            </div>
             <?php if(count($errors) > 0):?>
                 <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
                     <strong>Errors:</strong>
@@ -26,11 +40,17 @@
             <input class="my-2 form-control" type="email" value="<?=get_var('email')?>" name="email" placeholder="Email">
 
             <br>
-            <button class="btn btn-primary float-end">Add User</button>
-            <button type="button" class="btn btn-danger">Cancel</button>
+            <button type="submit" class="btn btn-primary float-end">Maak aan</button>
+
+            <a href="<?=ROOT?>/leden">
+                <button type="button" class="btn btn-danger">Annuleer</button>
+            </a>
         </div>
     </form>
 
 </div>
+
+<?php $this->view('includes/footer')?>
+
 
 

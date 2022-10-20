@@ -45,12 +45,45 @@ class Leden extends Controller
 
         $crumbs[] = ['Dashboard',''];
         $crumbs[] = ['Leden','leden'];
-        $crumbs[] = ['Add','leden/add'];
+        $crumbs[] = ['Add',''];
 
         $this->view('leden.add',[
             'errors'=>$errors,
             'crumbs'=>$crumbs,
         ]);
     }
+
+    public function edit($id = null)
+    {
+        $leden = new Lid();
+        $errors = array();
+        if(count($_POST) > 0)
+        {
+
+            if($leden->validate($_POST))
+            {
+                $leden->update($id,$_POST);
+                $this->redirect('leden');
+            }else
+            {
+                //errors
+                $errors = $leden->errors;
+            }
+        }
+
+        $crumbs[] = ['Dashboard',''];
+        $crumbs[] = ['Leden','leden'];
+        $crumbs[] = ['Edit',''];
+
+        $row = $leden->where('id', $id);
+
+        $this->view('leden.edit',[
+            'row'=>$row,
+            'errors'=>$errors,
+            'crumbs'=>$crumbs,
+        ]);
+    }
+
+
 
 }
