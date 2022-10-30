@@ -46,9 +46,6 @@ class Lid extends Model
             $this->errors['email'] = "Vul een geldig e-mail adres in";
         }
 
-
-
-
         if(count($this->errors) == 0)
         {
             return true;

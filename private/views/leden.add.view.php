@@ -19,8 +19,13 @@
     <form class="shadow-sm" method="post">
 
         <div class="p-2  mr-4" style="margin-top: 50px; width: 100%">
-            <div class="icon-container d-flex align-items-center justify-content-center">
-                <i class="icon2" data-feather="user-plus"></i>
+            <div class="d-flex align-items-center p-0">
+                <div class="icon-container d-flex align-items-center justify-content-center">
+                    <i class="icon2" data-feather="user-plus"></i>
+                </div>
+                <div class="d-flex title justify-content-center">
+                    Gegevens
+                </div>
             </div>
             <?php if(count($errors) > 0):?>
                 <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">

@@ -149,3 +149,26 @@ input{
     stroke-width: 2px;
     height: 60px;
 }
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding: 1rem 2rem;
+    }
+}
+
+.tdaction {
+    width: 15%;
+}
+
+.tdSr {
+    width: 7%;
+}
+
+strong {
+    font-size: 24px !important;
+}
+
+input.largerCheckbox {
+    width: 20px;
+    height: 20px;
+}

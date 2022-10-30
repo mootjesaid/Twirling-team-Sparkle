@@ -17,12 +17,25 @@ class Model extends Database
 
     public function where($column,$value)
     {
+
         $column = addslashes($column);
         $query = "select * from $this->table where $column = :value";
-        echo $query;
-        return $this->query($query,[
+        $data = $this->query($query,[
             'value'=>$value
         ]);
+
+        //run functions after select
+        if(is_array($data)){
+            if(property_exists($this, 'afterSelect'))
+            {
+                foreach($this->afterSelect as $func)
+                {
+                    $data = $this->$func($data);
+                }
+            }
+        }
+
+        return $data;
     }
 
     public function findAll()
