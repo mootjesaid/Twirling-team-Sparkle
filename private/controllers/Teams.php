@@ -2,20 +2,20 @@
 /**
  * leden controller
  */
-class Leden extends Controller
+class Teams extends Controller
 {
 
     public function index()
     {
         //code..
-        $lid = new Lid();
+        $team = new Team();
 
-        $data = $lid->findAll();
+        $data = $team->findAll();
 
         $crumbs[] = ['Dashboard','home'];
         $crumbs[] = ['Leden','leden'];
 
-        $this->view('leden',[
+        $this->view('teams',[
             'crumbs'=>$crumbs,
             'rows'=>$data
         ]);
@@ -28,26 +28,26 @@ class Leden extends Controller
         if(count($_POST) > 0)
         {
 
-            $leden = new Lid();
-            if($leden->validate($_POST))
+            $teams = new Team();
+            if($teams->validate($_POST))
             {
 
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
-                $leden->insert($_POST);
-                $this->redirect('leden');
+                $teams->insert($_POST);
+                $this->redirect('teams');
             }else
             {
                 //errors
-                $errors = $leden->errors;
+                $errors = $teams->errors;
             }
         }
 
         $crumbs[] = ['Dashboard',''];
-        $crumbs[] = ['Leden','leden'];
+        $crumbs[] = ['Leden','teams'];
         $crumbs[] = ['Add',''];
 
-        $this->view('leden.add',[
+        $this->view('teams.add',[
             'errors'=>$errors,
             'crumbs'=>$crumbs,
         ]);
@@ -55,30 +55,30 @@ class Leden extends Controller
 
     public function edit($id = null)
     {
-        $leden = new Lid();
+        $teams = new Team();
         $errors = array();
         if(count($_POST) > 0)
         {
 
-            if($leden->validate($_POST))
+            if($teams->validate($_POST))
             {
-                $leden->update($id,$_POST);
-                $this->redirect('leden');
+                $teams->update($id,$_POST);
+                $this->redirect('teams');
             }else
             {
                 //errors
-                $errors = $leden->errors;
+                $errors = $teams->errors;
             }
         }
 
         $crumbs[] = ['Dashboard',''];
-        $crumbs[] = ['Leden','leden'];
-        $crumbs[] = ['Edit','leden/edit'];
+        $crumbs[] = ['Leden','teams'];
+        $crumbs[] = ['Edit','teams/edit'];
 
 
-        $row = $leden->where('id', $id);
+        $row = $teams->where('id', $id);
 
-        $this->view('leden.edit',[
+        $this->view('teams.edit',[
             'row'=>$row,
             'errors'=>$errors,
             'crumbs'=>$crumbs,
@@ -87,22 +87,22 @@ class Leden extends Controller
 
     public function delete($id = null)
     {
-        $leden = new Lid();
+        $teams = new Team();
         $errors = array();
         if(count($_POST) > 0)
         {
-            $leden->delete($id);
-            $this->redirect('leden');
+            $teams->delete($id);
+            $this->redirect('teams');
         }
 
         $crumbs[] = ['Dashboard',''];
-        $crumbs[] = ['Leden','leden'];
-        $crumbs[] = ['Delete','leden/delete'];
+        $crumbs[] = ['Leden','teams'];
+        $crumbs[] = ['Delete','teams/delete'];
 
 
-        $row = $leden->where('id', $id);
+        $row = $teams->where('id', $id);
 
-        $this->view('leden.delete',[
+        $this->view('teams.delete',[
             'row'=>$row,
             'crumbs'=>$crumbs,
         ]);
