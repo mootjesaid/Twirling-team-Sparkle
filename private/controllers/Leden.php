@@ -19,7 +19,9 @@ class Leden extends Controller
             'crumbs'=>$crumbs,
             'rows'=>$data
         ]);
+
     }
+
 
     public function add()
     {

@@ -1,4 +1,4 @@
 $(document).ready(function () {
-    $('#leden').DataTable();
+    $('#tabel').DataTable();
 });
 

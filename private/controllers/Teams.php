@@ -21,6 +21,34 @@ class Teams extends Controller
         ]);
     }
 
+    public function deleteFromTeam($id = null)
+    {
+        $leden = new Lid();
+        $errors = array();
+        if(count($_POST) > 0)
+        {
+
+            if($leden->validate($_POST))
+            {
+                $leden->update($id,$_POST);
+                $this->redirect('');
+            }else
+            {
+                //errors
+                $errors = $leden->errors;
+            }
+        }
+
+        $row = $leden->where('id', $id);
+
+        $this->view('beheer',[
+            'row'=>$row,
+            'errors'=>$errors,
+        ]);
+    }
+
+
+
     public function add()
     {
 

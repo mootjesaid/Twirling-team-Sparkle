@@ -7,7 +7,11 @@
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Teams
+
+                <?php foreach ($team as $obj)
+                {
+                    echo "Team ".$obj->naam;
+                }?>
             </div>
         </div>
         <div class="d-flex align-items-center p-2 ">
@@ -18,7 +22,7 @@
     <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
         <i class="icon" data-feather="user"></i>
         <a href="<?=ROOT?>/teams/add">
-            <button class="btn_add p-2"></i>Nieuwe team</button>
+            <button class="btn_add p-2"></i>Lid toevoegen</button>
         </a>
     </div>
     </div>
@@ -29,8 +33,8 @@
         <table id="tabel" class="table table-striped">
             <thead>
             <tr>
-                <th>Team</th>
-                <th>Datum</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
                 <th>Actie</th>
             </tr>
             </thead>
@@ -40,21 +44,18 @@
                 <?php foreach ($rows as $row):?>
 
                     <tr>
-                        <td><?=$row->naam?></td>
-                        <td><?=get_date($row->datum)?></td>
+                        <td><?=$row->voornaam?></td>
+                        <td><?=$row->achternaam?></td>
                         <td>
-                            <a href="<?=ROOT?>/teams/delete/<?=$row->id?>">
+                            <a href="<?=ROOT?>/teams/beheer/liddelete/<?=$row->id?>">
                                 <input class="btn btn-danger float-end" type="submit" value="Delete"></button>
-                            </a>
-                            <a href="<?=ROOT?>/beheer/<?=$row->id?>">
-                                <button class="btn btn btn-info"><i>beheren</i></button>
                             </a>
                         </td>
                     </tr>
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>No teams were found at this time</h4>
+                <h4>No Leden were found at this time</h4>
             <?php endif;?>
 
             </tbody>
