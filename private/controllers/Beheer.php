@@ -14,7 +14,6 @@ class Beheer extends Controller
         $team = $team->where('id', $team_id);
 
 
-
         $row = $lid->where('team_id', $team_id);
 
         $crumbs[] = ['Dashboard','home'];
@@ -26,5 +25,39 @@ class Beheer extends Controller
             'team'=>$team
         ]);
 
+    }
+
+    public function delete($id = null, $team_id = null )
+    {
+        $lid = new Lid();
+        $team = new Team();
+        $team = $team->where('id', $team_id);
+        $errors = array();
+        if(count($_POST) > 0)
+        {
+
+            if($lid->validate($_POST))
+            {
+                $lid->update($id,$_POST);
+                $this->redirect('teams');
+            }else
+            {
+                //errors
+                $errors = $lid->errors;
+            }
+        }
+
+        $crumbs[] = ['Dashboard',''];
+        $crumbs[] = ['Leden','teams'];
+        $crumbs[] = ['Edit','teams/edit'];
+
+
+        $row = $lid->where('id', $id);
+
+        $this->view('beheer.delete',[
+            'row'=>$row,
+            'errors'=>$errors,
+            'crumbs'=>$crumbs,
+        ]);
     }
 }

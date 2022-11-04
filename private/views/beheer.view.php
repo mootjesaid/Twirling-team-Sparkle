@@ -8,10 +8,10 @@
             </div>
             <div class="d-flex title justify-content-center">
 
-                <?php foreach ($team as $obj)
+               <!-- --><?php /*foreach ($team as $obj)
                 {
                     echo "Team ".$obj->naam;
-                }?>
+                }*/?>
             </div>
         </div>
         <div class="d-flex align-items-center p-2 ">
@@ -47,7 +47,7 @@
                         <td><?=$row->voornaam?></td>
                         <td><?=$row->achternaam?></td>
                         <td>
-                            <a href="<?=ROOT?>/teams/beheer/liddelete/<?=$row->id?>">
+                            <a href="<?=ROOT?>/beheer/delete/<?=$row->id?>">
                                 <input class="btn btn-danger float-end" type="submit" value="Delete"></button>
                             </a>
                         </td>
