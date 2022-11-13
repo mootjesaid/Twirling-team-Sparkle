@@ -1,6 +1,6 @@
 <?php
 /**
- * User model
+ * Users model
  */
 class User extends Model
 {
@@ -8,14 +8,14 @@ class User extends Model
         'voornaam',
         'achternaam',
         'rol',
-//        'email',
+        'email',
         'telefoonnummer',
         'wachtwoord',
         'datum',
     ];
 
     protected $beforeInsert = [
-        'hash_password'
+        'hash_wachtwoord'
     ];
 
     public  function validate($DATA)
@@ -72,7 +72,7 @@ class User extends Model
         }
         return false;
     }
-    public function hash_password($data)
+    public function hash_wachtwoord($data)
     {
         $data['wachtwoord'] = password_hash($data['wachtwoord'], PASSWORD_DEFAULT);
         return $data;

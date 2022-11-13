@@ -7,7 +7,7 @@
             <i class="icon2" data-feather="table"></i>
         </div>
         <div class="d-flex title justify-content-center">
-            Lid Toevoegen
+            Team aanmaken
         </div>
     </div>
     <div class="d-flex align-items-center p-2 ">
@@ -37,13 +37,7 @@
                 </div>
             <?php endif;?>
 
-            <input class="my-2 form-control"  value="<?=get_var('voornaam')?>" type="text" name="voornaam" placeholder="Voor naam" >
-            <input class="my-2 form-control" value="<?=get_var('achternaam')?>" type="text" name="achternaam" placeholder="Achter naam" >
-            <input class="my-2 form-control"  value="<?=get_var('adres')?>" type="text" name="adres" placeholder="adres" >
-            <input class="my-2 form-control" value="<?=get_var('woonplaats')?>" type="text" name="woonplaats" placeholder="Woonplaats" >
-            <input class="my-2 form-control" type="number" value="<?=get_var('telefoonnummer')?>" name="telefoonnummer" placeholder="Telefoonnummer" >
-            <input class="my-2 form-control" type="email" value="<?=get_var('email')?>" name="email" placeholder="Email">
-
+            <input class="my-2 form-control"  value="<?=get_var('naam')?>" type="text" name="naam" placeholder="naam" >
             <br>
             <button type="submit" class="btn btn-primary float-end">Maak aan</button>
 

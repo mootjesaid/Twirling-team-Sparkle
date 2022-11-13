@@ -28,18 +28,18 @@ class Teams extends Controller
         if(count($_POST) > 0)
         {
 
-            $teams = new Team();
-            if($teams->validate($_POST))
+            $team = new Team();
+            if($team->validate($_POST))
             {
 
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
-                $teams->insert($_POST);
+                $team->insert($_POST);
                 $this->redirect('teams');
             }else
             {
                 //errors
-                $errors = $teams->errors;
+                $errors = $team->errors;
             }
         }
 

@@ -9,6 +9,7 @@ class Team extends Model
 
     protected $allowedColumns = [
         'naam',
+        'datum'
 
     ];
 

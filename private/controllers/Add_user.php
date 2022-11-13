@@ -19,7 +19,7 @@ class Add_user extends Controller
                 $arr['rol'] = $_POST['rol'];
                 $arr['email'] = $_POST['email'];
                 $arr['telefoonnummer'] = $_POST['telefoonnummer'];
-                $arr['wachtwoord'] = $_POST['wachtwoord'];
+                $arr['wachtwoord'] = ($_POST['wachtwoord']);
                 $arr['datum'] = date("Y-m-d H:i:s");
 
                 $user->insert($arr);

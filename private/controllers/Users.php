@@ -4,7 +4,7 @@
 /**
  * home controller
  */
-class User extends Controller
+class Users extends Controller
 {
     function index($id = '')
     {
