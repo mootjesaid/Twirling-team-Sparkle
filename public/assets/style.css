@@ -3,9 +3,19 @@ body{
 width: 100%;
 
 }
+canvas{
+    width: 100px    ;
+}
+.container-chart{
+    background: white;
+    width: 80%;
+    margin-left: 280px;
+    border-radius: 8px;
+    height: 20%;
+}
 
 .statusCard{
-    border-left: 4px solid red;
+    border-left: 4px solid #DEB900;
     border-radius: 8px;
     margin-left: -1px;
     height: 100%;
