@@ -8,7 +8,7 @@ class Beheer extends Controller
     public function index($team_id = null)
     {
         //code..
-        $lid = new Lid();
+        $lid = new User();
         $team = new Team();
 
         $team = $team->where('id', $team_id);
@@ -29,7 +29,7 @@ class Beheer extends Controller
 
     public function delete($id = null, $team_id = null )
     {
-        $lid = new Lid();
+        $lid = new User();
         $team = new Team();
         $team = $team->where('id', $team_id);
         $errors = array();

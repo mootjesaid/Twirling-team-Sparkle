@@ -13,16 +13,19 @@ class Home extends Controller
             $this->redirect('login');
         }
 
-        $user = new User();
+        $lid = new Lid();
 
-//        $user->insert($arr);
-//        $user->update(4,$arr);
-//        $user->delete(5);
+        $active = $lid->where('actief', 'ja');
+        $inactive = $lid->where('actief', 'nee');
 
-        $data = $user->findAll();
 
-        $this->view('home',['rows'=>$data]);
+        $this->view('home',[
+            'inactive'=>$inactive,
+            'active'=>$active,
+        ]);
     }
+
+
 }
 
 

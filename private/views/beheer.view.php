@@ -25,7 +25,7 @@
             <button class="btn_add p-2"></i>Lid toevoegen</button>
         </a>
     </div>
-    </div>
+
 
     <div class="container-bg">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">

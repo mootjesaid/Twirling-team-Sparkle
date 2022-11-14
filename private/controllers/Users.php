@@ -1,15 +1,22 @@
 <?php
-
-
 /**
- * home controller
+ * leden controller
  */
 class Users extends Controller
 {
-    function index($id = '')
+
+    public function index()
     {
-        echo "this is the user controller ". $id;
+        //code..
+        $user = new User();
+
+        $data = $user->findAll();
+
+
+        $this->view('home', [
+            'rows' => $data
+        ]);
+
     }
+
 }
-
-
