@@ -15,6 +15,31 @@ class Model extends Database
         }
     }
 
+    public function whereEmail($column1,$value1,$column2, $value2)
+    {
+
+        $column1 = addslashes($column1);
+        $column2 = addslashes($column2);
+        $query = "select * from $this->table where $column1 = :value1 AND $column2 != :value2";
+        $data = $this->query($query,[
+            'value1'=>$value1,
+            'value2'=>$value2
+        ]);
+
+        //run functions after select
+        if(is_array($data)){
+            if(property_exists($this, 'afterSelect'))
+            {
+                foreach($this->afterSelect as $func)
+                {
+                    $data = $this->$func($data);
+                }
+            }
+        }
+
+        return $data;
+    }
+
     public function where($column,$value)
     {
 

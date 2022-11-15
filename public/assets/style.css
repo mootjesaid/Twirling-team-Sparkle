@@ -10,6 +10,13 @@ canvas#leden{
 canvas#klanten{
     width: 350px;
 }
+
+.editdelete{
+    height: 45px;
+}
+
+
+
 .chart{
     background: white;
     border-radius: 8px;
@@ -173,6 +180,12 @@ input{
 
 .icon2{
     color: #DEB900;
+    stroke-width: 2px;
+    height: 60px;
+}
+
+.icon3{
+    background: white;
     stroke-width: 2px;
     height: 60px;
 }

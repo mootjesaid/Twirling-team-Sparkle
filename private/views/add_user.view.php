@@ -1,4 +1,6 @@
 <?php $this->view('includes/head')?>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
     <div class="container-fluid">
         <form method="post">
@@ -14,8 +16,28 @@
                         <?php endforeach;?>
 			  </span>
                     </div>
-                <?php endif;?>
 
+                <?php endif;?>
+                <?php
+                $empty = '' ;
+                $image = get_image($empty);
+                ?>
+
+                <input type="file" onchange="preview()">
+                <img id="thumb" src="" width="150px"/>
+
+                <div class="align-items-center p-5">
+                    <img id="blah" src="#" class="border border-primary d-block mx-auto rounded-circle " style="width:150px;">
+                    <br>
+                    <div class="text-center">
+                        <label for="image_browser" class="btn-sm btn btn-info text-white">
+                            <input onchange="display_image_name(this.files[0].name)" id="image_browser" type="file"  name="image" style="display: none;">
+                            Browse Image
+                        </label>
+                        <br>
+
+                    </div>
+                </div>
                 <input class="my-2 form-control"  value="<?=get_var('voornaam')?>" type="voornaam" name="voornaam" placeholder="First Name" >
                 <input class="my-2 form-control" value="<?=get_var('achternaam')?>" type="achternaam" name="achternaam" placeholder="Last Name" >
 
@@ -37,4 +59,12 @@
         </form>
 
     </div>
+
+<script>
+    function display_image_name(file_name)
+    {
+        document.querySelector(".file_info").innerHTML = '<b>Selected file:</b><br>' + file_name;
+    }
+</script>
+<?php $this->view('includes/footer')?>
 

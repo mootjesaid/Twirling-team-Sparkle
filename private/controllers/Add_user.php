@@ -14,15 +14,27 @@ class Add_user extends Controller
 
             if ($user->validate($_POST))
             {
-                $arr['voornaam'] = $_POST['voornaam'];
-                $arr['achternaam'] = $_POST['achternaam'];
-                $arr['rol'] = $_POST['rol'];
-                $arr['email'] = $_POST['email'];
-                $arr['telefoonnummer'] = $_POST['telefoonnummer'];
-                $arr['wachtwoord'] = ($_POST['wachtwoord']);
-                $arr['datum'] = date("Y-m-d H:i:s");
+                if (count($_FILES) > 0) {
 
-                $user->insert($arr);
+//                    //we have an image
+                    $allowed[] = "image/jpeg";
+                    $allowed[] = "image/png";
+
+                    if ($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed)) {
+                        $folder = "uploads";
+                        if (!file_exists($folder)) {
+                            mkdir($folder);
+                        }
+                        $uniquesavename = time() . uniqid(rand());
+                        $destination = $folder . "/" . $uniquesavename . '.jpg';;
+                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+                        $_POST['image'] = $destination;
+
+                    }
+
+                }
+
+                $user->insert($_POST);
                 $this->redirect('login');
             }else
             {

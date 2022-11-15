@@ -11,7 +11,6 @@
         </div>
     </div>
     <div class="d-flex align-items-center p-2 ">
-        <?php $this->view('includes/crumbs',['crumbs'=>$crumbs])?>
     </div>
 </div>
 
@@ -40,6 +39,14 @@
                         <div class="col-sm-4 col-md-3 flex-grow-1">
 
                             <table>
+                                <tr style="display:none;">
+                                    <td>
+                                        id
+                                    </td>
+                                    <td style="width: 300%">
+                                        <input autofocus class="my-2 form-control" value="<?=get_var('id',$row[0]->id)?>" type="text" name="id" placeholder="id">
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         Voornaam
@@ -58,27 +65,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Adres
-                                    </td>
-                                    <td style="width: 300%;">
-                                        <input autofocus class="my-2 form-control"  value="<?=get_var('adres', $row[0]->adres)?>" type="text" name="adres" placeholder="adres" >
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Woonplaats
-                                    </td>
-                                    <td style="width: 300%;">
-                                        <input autofocus class="my-2 form-control" value="<?=get_var('woonplaats', $row[0]->woonplaats)?>" type="text" name="woonplaats" placeholder="Woonplaats" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         Telefoonnnummer
                                     </td>
                                     <td style="width: 300%;">
-                                        <input autofocus class="my-2 form-control" type="number" value="<?=get_var('telefoonnummer', $row[0]->telefoonnummer)?>" name="telefoonnummer" placeholder="Telefoonnummer" >
+                                        <input autofocus class="my-2 form-control" type="text" value="<?=get_var('telefoonnummer', $row[0]->telefoonnummer)?>" name="telefoonnummer" placeholder="Telefoonnummer" >
                                     </td>
                                 </tr>
                                 <tr>
@@ -90,7 +80,21 @@
 
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        Rol
+                                    </td>
+                                    <td style="width: 300%;">
+                                        <select name="rol" class="my-2 form-control">
+                                            <option <?=get_select('rol', '')?> value="">Kies een rol...</option>
+                                            <option <?=get_select('rol','admin')?><?php if($row[0]->rol =="admin") echo 'selected="selected"'; ?> value="admin">Admin</option>
+                                            <option <?=get_select('rol','medewerker')?><?php if($row[0]->rol =="medewerker") echo 'selected="selected"'; ?> value="medewerker">Medewerker</option>
+                                        </select>
+                                    </td>
+                                </tr>
                             </table>
+
+
 
                             <br>
                             <button class="btn btn-primary float-end">Opslaan</button>
@@ -130,13 +134,13 @@
     <?php endif; ?>
 
 
-<script>
-    function display_image_name(file_name)
-    {
-        document.querySelector(".file_info").innerHTML = '<b>Selected file:</b><br>' + file_name;
-    }
-</script>
-<?php $this->view('includes/footer')?>
+    <script>
+        function display_image_name(file_name)
+        {
+            document.querySelector(".file_info").innerHTML = '<b>Selected file:</b><br>' + file_name;
+        }
+    </script>
+    <?php $this->view('includes/footer')?>
 
 
 
