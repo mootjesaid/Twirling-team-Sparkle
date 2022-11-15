@@ -2,7 +2,9 @@ $(document).ready(function () {
     $('#tabel').DataTable();
 });
 
-docuent.getElementById("deleteForm").submit();
+
+
+document.getElementById("deleteForm").submit();
 
 
 

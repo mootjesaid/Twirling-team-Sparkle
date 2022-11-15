@@ -32,3 +32,24 @@ function get_date($date)
 
     return date("Y-m-d",strtotime($date));
 }
+
+function get_image($image)
+{
+	if(!file_exists($image)){
+        $image = ASSETS.'/avatar-placeholder.png';
+
+    }else
+    {
+
+        $image = ROOT . "/" . $image;
+    }
+
+ 	return $image;
+}
+
+function show($data)
+{
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}

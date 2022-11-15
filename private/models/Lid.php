@@ -11,7 +11,7 @@ class Lid extends Model
         'achternaam',
         'adres',
         'woonplaats',
-        'foto',
+        'image',
         'telefoonnummer',
         'email',
         'datum',

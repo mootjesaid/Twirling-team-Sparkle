@@ -61,13 +61,62 @@ class Leden extends Controller
     {
         $leden = new Lid();
         $errors = array();
+  ;
+
         if(count($_POST) > 0)
         {
 
             if($leden->validate($_POST))
             {
-                $leden->update($id,$_POST);
-                $this->redirect('leden');
+
+                // delete works just have to update
+                $path = $_SERVER['DOCUMENT_ROOT'] . "/Twirling-team-Sparkle/public/uploads";
+//                $string = $_POST['image'];
+//                $imagename = str_replace('/', '\\', $string);
+//                $filename = getcwd(). "\\".$imagename;
+                //$filename =  $path . "/" . trim($imagename,'uploads/');; // build the full path here
+                $path = $_SERVER['DOCUMENT_ROOT'] . '/Twirling-team-Sparkle/public/uploads/166847296512234163596372e0852de36.jpg';
+                $filename = realpath($path);
+                if (array_key_exists('image', $_POST)) {
+                    $path = $_SERVER['DOCUMENT_ROOT'] . '/Twirling-team-Sparkle/public/uploads/166847296512234163596372e0852de36.jpg';
+                    $filename = realpath($path);
+                    if (file_exists($filename)) {
+                        unlink($filename);
+                        echo 'File ' . $filename . ' has been deleted';
+                    } else {
+                        echo 'Could not delete ' . $filename . ', file does not exist';
+                    }
+                }else{
+                    echo $path;
+                }
+
+//                $deleteImage =  getcwd() . '\uploads\1668469845997947096372d45556950.jpg';
+//
+//                unlink($deleteImage);
+//                //check for files
+                if(count($_FILES) > 0)
+                {
+
+                    //we have an image
+//                    $allowed[] = "image/jpeg";
+//                    $allowed[] = "image/png";
+//
+//                    if($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed))
+//                    {
+//                        $folder = "uploads";
+//                        if(!file_exists($folder)){
+//                            mkdir($folder);
+//                        }
+//                        $uniquesavename = time().uniqid(rand());
+//                        $destination = $folder. "/" . $uniquesavename . '.jpg';;
+//                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+//                        $_POST['image'] = $destination;
+//
+//                    }
+
+                }
+//               $leden->update($id,$_POST);
+                ///$this->redirect('leden');
             }else
             {
                 //errors
@@ -111,4 +160,6 @@ class Leden extends Controller
             'crumbs'=>$crumbs,
         ]);
     }
+
+
 }
