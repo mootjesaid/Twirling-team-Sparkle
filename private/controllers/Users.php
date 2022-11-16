@@ -133,12 +133,12 @@ class Users extends Controller
         $errors = array();
         if (count($_POST) > 0) {
             $user->delete($id);
-            $this->redirect('medewerkers');
+            $this->redirect('users');
         }
 
         $row = $user->where('id', $id);
 
-        $this->view('medewerkers.delete', [
+        $this->view('users.delete', [
             'row' => $row,
         ]);
     }

@@ -1,18 +1,18 @@
 <?php
 /**
- * leden controller
+ * klanten controller
  */
-class Leden extends Controller
+class Klanten extends Controller
 {
 
     public function index()
     {
         //code..
-        $lid = new Lid();
+        $klant = new Klant();
 
-        $data = $lid->where('actief', 'ja');
+        $data = $klant->where('actief', 'ja');
 
-        $this->view('leden',[
+        $this->view('klanten',[
             'rows'=>$data,
         ]);
 
@@ -25,41 +25,36 @@ class Leden extends Controller
         if(count($_POST) > 0)
         {
 
-            $leden = new Lid();
-            if($leden->validate($_POST))
+            $klant = new Klant();
+            if($klant->validate($_POST))
             {
 
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
-                $leden->insert($_POST);
-                $this->redirect('leden');
+                $klant->insert($_POST);
+                $this->redirect('klanten');
             }else
             {
                 //errors
-                $errors = $leden->errors;
+                $errors = $klant->errors;
             }
         }
 
-        $crumbs[] = ['Dashboard',''];
-        $crumbs[] = ['Leden','leden'];
-        $crumbs[] = ['Add',''];
-
-        $this->view('leden.add',[
+        $this->view('klanten.add',[
             'errors'=>$errors,
-            'crumbs'=>$crumbs,
         ]);
     }
 
     public function edit($id = null)
     {
-        $leden = new Lid();
+        $klant = new Klant();
         $errors = array();
-  ;
+        ;
 
         if(count($_POST) > 0)
         {
 
-            if($leden->validate($_POST))
+            if($klant->validate($_POST))
             {
 
                 if (array_key_exists('image', $_POST)) {
@@ -96,73 +91,44 @@ class Leden extends Controller
                     }
 
                 }
-               $leden->update($id,$_POST);
-                $this->redirect('leden');
+                $klant->update($id,$_POST);
+                $this->redirect('klanten');
             }else
             {
                 //errors
-                $errors = $leden->errors;
+                $errors = $klant->errors;
             }
         }
 
-        $crumbs[] = ['Dashboard',''];
-        $crumbs[] = ['Leden','leden'];
-        $crumbs[] = ['Edit','leden/edit'];
+        $row = $klant->where('id', $id);
 
-
-        $row = $leden->where('id', $id);
-
-        $this->view('leden.edit',[
+        $this->view('klanten.edit',[
             'row'=>$row,
             'errors'=>$errors,
-            'crumbs'=>$crumbs,
         ]);
     }
 
-//    public function delete($id = null)
-//    {
-//        $leden = new Lid();
-//        $errors = array();
-//        if(count($_POST) > 0)
-//        {
-//            $leden->delete($id);
-//            $this->redirect('leden');
-//        }
-//
-//        $crumbs[] = ['Dashboard',''];
-//        $crumbs[] = ['Leden','leden'];
-//        $crumbs[] = ['Delete','leden/delete'];
-//
-//
-//        $row = $leden->where('id', $id);
-//
-//        $this->view('leden.delete',[
-//            'row'=>$row,
-//            'crumbs'=>$crumbs,
-//        ]);
-//    }
-
     public function delete($id = null)
     {
-        $lid = new Lid();
+        $klant = new Klant();
         $errors = array();
         if(count($_POST) > 0)
         {
 
-            if($lid->validate($_POST))
+            if($klant->validate($_POST))
             {
-                $lid->update($id,$_POST);
-                $this->redirect('leden');
+                $klant->update($id,$_POST);
+                $this->redirect('klanten');
             }else
             {
                 //errors
-                $errors = $lid->errors;
+                $errors = $klant->errors;
             }
         }
 
-        $row = $lid->where('id', $id);
+        $row = $klant->where('id', $id);
 
-        $this->view('leden.delete',[
+        $this->view('klanten.delete',[
             'row'=>$row,
             'errors'=>$errors,
         ]);

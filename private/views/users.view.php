@@ -7,7 +7,7 @@
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Teams
+                Medewerkers
             </div>
         </div>
         <div class="d-flex align-items-center p-2 ">
@@ -18,7 +18,7 @@
     <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
         <i class="icon" data-feather="user"></i>
         <a href="<?=ROOT?>/users/add">
-            <button class="btn_add p-2"></i>Nieuwe team</button>
+            <button style="width: 200px" class="btn_add p-2"></i>Medewerker toevoegen</button>
         </a>
     </div>
     </div>
@@ -29,8 +29,8 @@
         <table id="tabel" class="table table-striped">
             <thead>
             <tr>
-                <th>Voornaam</th>
-                <th>Achternaam</th>
+                <th>Profiel foto</th>
+                <th>Naam</th>
                 <th>Telefoonnummer</th>
                 <th>Email</th>
                 <th>Rol</th>
@@ -39,25 +39,35 @@
             </tr>
             </thead>
             <tbody>
+
             <?php if($rows):?>
 
                 <?php foreach ($rows as $row):?>
+                    <?php
+                    $image = get_image($row->image);
+                    ?>
+                    <tr class="align-middle">
+                        <td style="width: 75px">
+                            <div class="">
+                                <img src="<?=$image?>" class="border border-primary d-block rounded-circle " style="width:55px;">
+                            </div>
+                        </td>
+                        <td>
+                                <?=$row->voornaam?><br><?=$row->achternaam?>
 
-                    <tr>
-                        <td><?=$row->voornaam?></td>
-                        <td><?=$row->achternaam?></td>
+                        </td>
                         <td><?=$row->telefoonnummer?></td>
                         <td><?=$row->email?></td>
                         <td><?=$row->rol?></td>
                         <td><?=get_date($row->datum)?></td>
                         <td>
 
-                            <a class="editdelete" href="<?=ROOT?>/users/edit/<?=$row->id?>">
-                                <button class="btn"><i class="icon-2" data-feather="edit"></i></button>
+                            <a class="" href="<?=ROOT?>/users/edit/<?=$row->id?>">
+                                <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
 
-                            <a class="editdelete" href="<?=ROOT?>/users/delete/<?=$row->id?>">
-                                <button class="btn"><i class="icon-3" data-feather="trash"></i></button>
+                            <a class="" href="<?=ROOT?>/users/delete/<?=$row->id?>">
+                                <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
                             </a>
 
                         </td>

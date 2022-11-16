@@ -15,6 +15,17 @@ canvas#klanten{
     height: 45px;
 }
 
+.buttonedit{
+    border: none;
+    background: transparent;
+    color: #120D91;
+}
+
+.buttondelete{
+    border: none;
+    background: transparent;
+    color: red;
+}
 
 
 .chart{
@@ -40,10 +51,6 @@ canvas#klanten{
     font-weight: bold;
     font-family: 'Lato', sans-serif;
     padding-left: 15px;
-}
-
-.action-bar{
-
 }
 
 .container-bg{

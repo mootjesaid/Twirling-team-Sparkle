@@ -7,7 +7,7 @@
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Leden
+                Klanten
             </div>
         </div>
         <div class="d-flex align-items-center p-2 ">
@@ -18,7 +18,7 @@
     <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
         <i class="icon" data-feather="user"></i>
         <a href="<?=ROOT?>/teams/add">
-            <button class="btn_add p-2"></i>Lid toevoegen</button>
+            <button style="width: 150px" class="btn_add p-2"></i>Klant toevoegen</button>
         </a>
     </div>
     </div>
@@ -59,11 +59,11 @@
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
                         <td>
-                            <a class="" href="<?=ROOT?>/leden/edit/<?=$row->id?>">
+                            <a class="" href="<?=ROOT?>/klanten/edit/<?=$row->id?>">
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
 
-                            <a class="" href="<?=ROOT?>/leden/delete/<?=$row->id?>">
+                            <a class="" href="<?=ROOT?>/klanten/delete/<?=$row->id?>">
                                 <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
                             </a>
                         </td>

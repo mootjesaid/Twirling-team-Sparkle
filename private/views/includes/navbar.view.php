@@ -17,11 +17,11 @@
                 </div>
             </div>
 
-            <li><a class="active" href="#home"><i class="icon" data-feather="home"></i>Dashboard</a></li>
-            <li><a href="#news"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
-            <li><a href="#news"><i class="icon-nav" data-feather="user"></i>Leden</a></li>
-            <li><a href="#contact"><i class="icon-nav" data-feather="users"></i>Teams</a></li>
-            <li><a href="#about"><i class="icon-nav" data-feather="user"></i>Klanten</a></li>
+            <li><a class="active" href="<?=ROOT?>/home"><i class="icon" data-feather="home"></i>Dashboard</a></li>
+            <li><a href="<?=ROOT?>/users"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
+            <li><a href="<?=ROOT?>/leden"><i class="icon-nav" data-feather="user"></i>Leden</a></li>
+            <li><a href="<?=ROOT?>/teams"><i class="icon-nav" data-feather="users"></i>Teams</a></li>
+            <li><a href="<?=ROOT?>/klanten"><i class="icon-nav" data-feather="user"></i>Klanten</a></li>
         </ul>
     </div>
     <script>
