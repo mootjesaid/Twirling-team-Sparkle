@@ -8,6 +8,11 @@ class Teams extends Controller
     public function index()
     {
         //code..
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $team = new Team();
 
         $data = $team->findAll();
@@ -23,6 +28,10 @@ class Teams extends Controller
 
     public function add()
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
 
         $errors = array();
         if(count($_POST) > 0)
@@ -55,6 +64,11 @@ class Teams extends Controller
 
     public function edit($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $teams = new Team();
         $errors = array();
         if(count($_POST) > 0)
@@ -87,6 +101,11 @@ class Teams extends Controller
 
     public function delete($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $teams = new Team();
         $errors = array();
         if(count($_POST) > 0)

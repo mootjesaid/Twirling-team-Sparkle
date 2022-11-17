@@ -8,6 +8,11 @@ class Klanten extends Controller
     public function index()
     {
         //code..
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $klant = new Klant();
 
         $data = $klant->where('actief', 'ja');
@@ -20,7 +25,10 @@ class Klanten extends Controller
 
     public function add()
     {
-
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
         $errors = array();
         if(count($_POST) > 0)
         {
@@ -47,6 +55,11 @@ class Klanten extends Controller
 
     public function edit($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $klant = new Klant();
         $errors = array();
         ;
@@ -110,6 +123,11 @@ class Klanten extends Controller
 
     public function delete($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $klant = new Klant();
         $errors = array();
         if(count($_POST) > 0)

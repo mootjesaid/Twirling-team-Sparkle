@@ -8,6 +8,10 @@ class Beheer extends Controller
     public function index($team_id = null)
     {
         //code..
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
         $lid = new User();
         $team = new Team();
 
@@ -29,6 +33,11 @@ class Beheer extends Controller
 
     public function delete($id = null, $team_id = null )
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $lid = new User();
         $team = new Team();
         $team = $team->where('id', $team_id);

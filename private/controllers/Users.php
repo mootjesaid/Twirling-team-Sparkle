@@ -11,22 +11,35 @@ class Users extends Controller
     public function index()
     {
         //code..
+        if(!Auth::admin())
+        {
+            $this->redirect('404');
+        }
+
         $user = new User();
 
         $data = $user->findAll();
 
+        if(Auth::access('admin')){
 
-        $this->view('users', [
-            'rows' => $data
-        ]);
+            $this->view('users',[
+                'row' => $data,
+            ]);
+        }else{
+            $this->view('403');
+        }
 
     }
 
     public function add()
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
 
         $errors = array();
-        if(count($_POST) > 0)
+        if(count($_POST) > 0 && Auth::access('admin'))
         {
 
             $user = new User();
@@ -65,17 +78,27 @@ class Users extends Controller
             }
         }
 
-        $this->view('users.add',[
-            'errors'=>$errors,
-        ]);
+        if(Auth::access('admin')){
+
+            $this->view('users.add',[
+                'errors' => $errors,
+            ]);
+        }else{
+            $this->view('403');
+        }
     }
 
     public function edit($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $user = new User();
         $errors = array();
 
-        if (count($_POST) > 0) {
+        if (count($_POST) > 0 && Auth::access('admin')) {
 
             if ($user->validate2($_POST)) {
 
@@ -92,7 +115,7 @@ class Users extends Controller
                     }
                 }
 
-                if (count($_FILES) > 0) {
+                if (count($_FILES) > 0 ) {
 
 //                    //we have an image
                     $allowed[] = "image/jpeg";
@@ -121,26 +144,43 @@ class Users extends Controller
 
         $row = $user->where('id', $id);
 
-        $this->view('users.edit', [
-            'row' => $row,
-            'errors' => $errors,
-        ]);
+        if(Auth::access('admin')){
+
+            $this->view('users.edit',[
+                'row' => $row,
+                'errors' => $errors,
+            ]);
+        }else{
+            $this->view('403');
+        }
+
     }
 
     public function delete($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $user = new User();
         $errors = array();
-        if (count($_POST) > 0) {
+        if (count($_POST) > 0 && Auth::access('admin')) {
             $user->delete($id);
             $this->redirect('users');
         }
 
         $row = $user->where('id', $id);
 
-        $this->view('users.delete', [
-            'row' => $row,
-        ]);
+        if(Auth::access('admin')){
+
+            $this->view('users.delete',[
+                'row'=>$row,
+            ]);
+        }else{
+            $this->view('403');
+        }
+
     }
 
 

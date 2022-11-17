@@ -8,6 +8,11 @@ class Leden extends Controller
     public function index()
     {
         //code..
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $lid = new Lid();
 
         $data = $lid->where('actief', 'ja');
@@ -20,6 +25,10 @@ class Leden extends Controller
 
     public function add()
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
 
         $errors = array();
         if(count($_POST) > 0)
@@ -52,6 +61,11 @@ class Leden extends Controller
 
     public function edit($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $leden = new Lid();
         $errors = array();
   ;
@@ -119,31 +133,13 @@ class Leden extends Controller
         ]);
     }
 
-//    public function delete($id = null)
-//    {
-//        $leden = new Lid();
-//        $errors = array();
-//        if(count($_POST) > 0)
-//        {
-//            $leden->delete($id);
-//            $this->redirect('leden');
-//        }
-//
-//        $crumbs[] = ['Dashboard',''];
-//        $crumbs[] = ['Leden','leden'];
-//        $crumbs[] = ['Delete','leden/delete'];
-//
-//
-//        $row = $leden->where('id', $id);
-//
-//        $this->view('leden.delete',[
-//            'row'=>$row,
-//            'crumbs'=>$crumbs,
-//        ]);
-//    }
-
     public function delete($id = null)
     {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
         $lid = new Lid();
         $errors = array();
         if(count($_POST) > 0)

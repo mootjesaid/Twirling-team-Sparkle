@@ -18,7 +18,9 @@
             </div>
 
             <li><a class="active" href="<?=ROOT?>/home"><i class="icon" data-feather="home"></i>Dashboard</a></li>
+            <?php if(Auth::access('admin')):?>
             <li><a href="<?=ROOT?>/users"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
+            <?php endif; ?>
             <li><a href="<?=ROOT?>/leden"><i class="icon-nav" data-feather="user"></i>Leden</a></li>
             <li><a href="<?=ROOT?>/teams"><i class="icon-nav" data-feather="users"></i>Teams</a></li>
             <li><a href="<?=ROOT?>/klanten"><i class="icon-nav" data-feather="user"></i>Klanten</a></li>

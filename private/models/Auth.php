@@ -50,4 +50,31 @@ class Auth
 
         return 'Unknown';
     }
+
+    public static function access($rank = 'medewerker')
+    {
+        // code...
+        if(!isset($_SESSION['USER']))
+        {
+            return false;
+        }
+
+        $logged_in_rank = $_SESSION['USER']->rol;
+
+        $ROL['admin'] 			= ['admin', 'medewerker'];
+        $ROL['medewerker'] 		= ['medewerker'];
+
+
+        if(!isset($ROL[$logged_in_rank]))
+        {
+            return false;
+        }
+
+        if(in_array($rank,$ROL[$logged_in_rank]))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

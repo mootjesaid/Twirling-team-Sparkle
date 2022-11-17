@@ -43,6 +43,7 @@
             <?php if($rows):?>
 
                 <?php foreach ($rows as $row):?>
+
                     <?php
                     $image = get_image($row->image);
                     ?>
