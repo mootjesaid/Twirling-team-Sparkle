@@ -63,6 +63,29 @@ class Model extends Database
         return $data;
     }
 
+    public function getName($column,$value)
+    {
+
+        $column = addslashes($column);
+        $query = "select voornaam from $this->table where $column = :value";
+        $data = $this->query($query,[
+            'value'=>$value
+        ]);
+
+        //run functions after select
+        if(is_array($data)){
+            if(property_exists($this, 'afterSelect'))
+            {
+                foreach($this->afterSelect as $func)
+                {
+                    $data = $this->$func($data);
+                }
+            }
+        }
+
+        return $data;
+    }
+
     public function findAll()
     {
         $query = "select * from $this->table";
@@ -121,12 +144,26 @@ class Model extends Database
         return $this->query($query,$data);
     }
 
+    public function updateToken($email, $token)
+    {
+
+        $data['email'] = $email;
+        $query = "update $this->table set verify_token = '$token' where email = :email";
+
+        return $this->query($query,$data);
+    }
+
 
     public function delete($id)
     {
         $query = "delete from $this->table where id = :id";
         $data['id'] = $id;
         return $this->query($query, $data);
+    }
+
+    function send_password_reset($get_name, $get_email, $token)
+    {
+
     }
 
 }
