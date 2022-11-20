@@ -155,7 +155,7 @@ use PHPMailer\PHPMailer\PHPMailer;
                     $addKey = substr(md5(uniqid(rand(), 1)), 3, 10);
                     $key = $key . $addKey;
                     // Insert Temp Table
-                    mysqli_query($con, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`) VALUES ('" . $email . "', '" . $key . "', '" . $expDate . "');");
+                    mysqli_query($con, "INSERT INTO `password_reset_temp` (`email`, `token`, `expDate`) VALUES ('" . $email . "', '" . $key . "', '" . $expDate . "');");
 
 
                     $output.='<p>Please click on the following link to reset your password.</p>';

@@ -11,6 +11,12 @@ width: 100%;
     font-family: 'Lato', sans-serif;
 }
 
+.alert.alert-danger {
+    background-color: rgba(248, 215, 218, 1);
+    border-color: rgba(220, 53, 69, 1);
+    color: rgba(114, 28, 36,1);
+}
+
 .container403 {
     height: 99vh;
     display: flex;

@@ -3,19 +3,15 @@
 <div class="container-fluid">
 
     <form method="post">
-        <div class="p-4 mx-auto mr-4 shadow rounded" style="margin-top: 50px;width:100%;max-width: 340px;">
-            <h2 class="text-center">My School</h2>
-            <img src="<?=ROOT?>/assets/logo.png" class="border border-primary d-block mx-auto rounded-circle" style="width:100px;">
+        <div class="p-4 mx-auto mr-4 shadow rounded " style="margin-top: 200px;width:100%;max-width: 340px;">
+            <img src="<?=ROOT?>/assets/Images/sparkle_twirling.png" class=" d-block mx-auto" style="width:200px;">
             <h3>Login</h3>
 
             <?php if(count($errors) > 0):?>
-                <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
-                    <strong>Errors:</strong>
+                <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
                     <?php foreach($errors as $error):?>
-                        <br><?=$error?>
+                        <?=$error?>
                     <?php endforeach;?>
-                    <span  type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-			    <span aria-hidden="true">&times;</span>
 			  </span>
                 </div>
             <?php endif;?>
@@ -24,7 +20,13 @@
             <br>
             <input class="form-control" value="<?=get_var('wachtwoord')?>" type="wachtwoord" name="wachtwoord" placeholder="wachtwoord">
             <br>
-            <button class="btn btn-primary">Login</button>
+
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary">Login</button>
+                <a href="<?=ROOT?>/passwordReset" class="text text-links mt-3">Wachtwoord vergeten</a>
+            </div>
+
         </div>
+
     </form>
 </div>

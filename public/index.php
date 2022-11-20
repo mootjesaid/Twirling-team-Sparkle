@@ -1,4 +1,4 @@
 <?php
 session_start();
-require("../private/core/autoload.php");
+require("../private/core/autoloader.php");
 $app = new App();

@@ -23,6 +23,24 @@ class Leden extends Controller
 
     }
 
+    public function inactive()
+    {
+        //code..
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
+        $lid = new Lid();
+
+        $data = $lid->where('actief', 'nee');
+
+        $this->view('leden.inactive',[
+            'rows'=>$data,
+        ]);
+
+    }
+
     public function add()
     {
         if(!Auth::logged_in())

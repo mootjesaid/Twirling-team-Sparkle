@@ -128,6 +128,26 @@ class Model extends Database
         return $this->query($query,$data);
     }
 
+    public function insertPasswordReset($data)
+    {
+
+
+
+            foreach($this->beforeInsert as $func)
+            {
+                $data = $this->$func($data);
+            }
+
+
+        $keys = array_keys($data);
+        $columns = implode(',', $keys);
+        $values = implode(',:', $keys);
+
+        $query = "insert into password_reset_temp ($columns) values (:$values)";
+
+        return $this->query($query,$data);
+    }
+
     public function update($id,$data)
     {
         $str = "";
@@ -160,10 +180,4 @@ class Model extends Database
         $data['id'] = $id;
         return $this->query($query, $data);
     }
-
-    function send_password_reset($get_name, $get_email, $token)
-    {
-
-    }
-
 }

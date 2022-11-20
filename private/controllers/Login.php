@@ -24,7 +24,7 @@ class Login extends Controller
                     $this->redirect('/home');
                 }
             }
-            $errors['email'] = "Wrong email or password";
+            $errors['email'] = "Foute email of wachtoord";
         }
 
         $this->view('login',[
