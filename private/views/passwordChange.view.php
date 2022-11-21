@@ -7,7 +7,7 @@ if (mysqli_connect_errno()) {
 date_default_timezone_set('Asia/Kolkata');
 $error = "";
 ?>
-?>
+
 <html>
 <head>
     <title>Reset Password</title>
@@ -25,7 +25,7 @@ $error = "";
                 $key = $_GET["key"];
                 $email = $_GET["email"];
                 $curDate = date("Y-m-d H:i:s");
-                $query = mysqli_query($con, "SELECT * FROM `password_reset_temp` WHERE `key`='" . $key . "' and `email`='" . $email . "';");
+                $query = mysqli_query($con, "SELECT * FROM `password_reset_temp` WHERE `token`='" . $key . "' and `email`='" . $email . "';");
                 $row = mysqli_num_rows($query);
                 if ($row == "") {
                     $error .= '<h2>Invalid Link</h2>';

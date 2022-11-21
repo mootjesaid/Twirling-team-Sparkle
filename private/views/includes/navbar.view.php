@@ -17,13 +17,16 @@
                 </div>
             </div>
 
-            <li><a class="active" href="<?=ROOT?>/home"><i class="icon" data-feather="home"></i>Dashboard</a></li>
+            <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            ?>
+
+            <li><a class="<?php if($actual_link == ROOT.'/home'){ echo ' active"';}?>" href="<?=ROOT?>/home"><i class="icon-nav" data-feather="home"></i>Dashboard</a></li>
             <?php if(Auth::access('admin')):?>
-            <li><a href="<?=ROOT?>/users"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
+            <li><a class="<?php if($actual_link == ROOT.'/users'){ echo ' active"';}?>" href="<?=ROOT?>/users"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
             <?php endif; ?>
-            <li><a href="<?=ROOT?>/leden"><i class="icon-nav" data-feather="user"></i>Leden</a></li>
-            <li><a href="<?=ROOT?>/teams"><i class="icon-nav" data-feather="users"></i>Teams</a></li>
-            <li><a href="<?=ROOT?>/klanten"><i class="icon-nav" data-feather="user"></i>Klanten</a></li>
+            <li ><a class="<?php if($actual_link == ROOT.'/leden'){ echo ' active"';}?>" href="<?=ROOT?>/leden"><i class="icon-nav" data-feather="user"></i>Leden</a></li>
+            <li><a class="<?php if($actual_link == ROOT.'/teams'){ echo ' active"';}?>" href="<?=ROOT?>/teams"><i class="icon-nav" data-feather="users"></i>Teams</a></li>
+            <li><a class="<?php if($actual_link == ROOT.'/klanten'){ echo ' active"';}?>" href="<?=ROOT?>/klanten"><i class="icon-nav" data-feather="user"></i>Klanten</a></li>
         </ul>
     </div>
     <script>

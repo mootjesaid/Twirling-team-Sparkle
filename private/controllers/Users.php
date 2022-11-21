@@ -23,7 +23,7 @@ class Users extends Controller
         if(Auth::access('admin')){
 
             $this->view('users',[
-                'row' => $data,
+                'rows' => $data,
             ]);
         }else{
             $this->view('403');
