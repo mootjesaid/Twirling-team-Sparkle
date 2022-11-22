@@ -10,8 +10,13 @@
                 Medewerkers
             </div>
         </div>
-        <div class="d-flex align-items-center p-2 ">
-
+        <div class="d-flex align-items-center p-2">
+            <div  class="d-flex pt-3 justify-content-center">
+                <ul class="breadcrumb">
+                    <li><a href="<?=ROOT?>/home">Dashboard</a></li>
+                    <li>Medewerkers</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -75,7 +80,7 @@
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>No teams were found at this time</h4>
+                <h4>Er zijn op dit moment geen medewerkers gevonden</h4>
             <?php endif;?>
 
             </tbody>

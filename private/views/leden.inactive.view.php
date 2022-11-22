@@ -1,24 +1,30 @@
 <?php $this->view('includes/header')?>
 <?php $this->view('includes/navbar')?>
 
+
     <div class="container-bg action-bar d-flex justify-content-between" style="margin-top: 100px;">
         <div class="d-flex align-items-center p-2">
             <div class="icon-container d-flex align-items-center justify-content-center">
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Leden
+                Inactieve leden
             </div>
         </div>
-        <div class="d-flex align-items-center p-2 ">
-
+        <div class="d-flex align-items-center p-2">
+            <div  class="d-flex pt-3 justify-content-center">
+                <ul class="breadcrumb">
+                    <li><a href="<?=ROOT?>/home">Dashboard</a></li>
+                    <li>Inactieve leden</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
-        <i class="icon" data-feather="user"></i>
+    <div class="container-bg1 action-bar d-flex justify-content-end mt-5 mb-3">
+
         <a href="<?=ROOT?>/teams/add">
-            <button class="btn_add p-2"></i>Lid toevoegen</button>
+
         </a>
     </div>
     </div>
@@ -64,7 +70,7 @@
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
 
-                            <a class="" href="<?=ROOT?>/leden/delete/<?=$row->id?>">
+                            <a class=""  href="<?=ROOT?>/leden/activate/<?=$row->id?>">
                                 <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
                             </a>
                         </td>
@@ -72,7 +78,7 @@
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>No teams were found at this time</h4>
+                <h4>Er zijn op dit moment geen leden gevonden</h4>
             <?php endif;?>
 
             </tbody>

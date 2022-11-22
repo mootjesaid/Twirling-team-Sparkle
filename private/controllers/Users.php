@@ -19,10 +19,13 @@ class Users extends Controller
         $user = new User();
 
         $data = $user->findAll();
+        $crumbs[] = ['Home','home'];
+        $crumbs[] = ['Users','users'];
 
         if(Auth::access('admin')){
 
             $this->view('users',[
+                'crumbs'=>$crumbs,
                 'rows' => $data,
             ]);
         }else{
@@ -78,9 +81,15 @@ class Users extends Controller
             }
         }
 
+        $crumbs[] = ['Home','home'];
+        $crumbs[] = ['Users','users'];
+        $crumbs[] = ['Toevoegen','users/add'];
+
+
         if(Auth::access('admin')){
 
             $this->view('users.add',[
+                'crumbs'=>$crumbs,
                 'errors' => $errors,
             ]);
         }else{

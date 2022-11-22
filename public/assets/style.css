@@ -1,7 +1,6 @@
 
 body{
 width: 100%;
-
 }
 
 * {
@@ -9,6 +8,76 @@ width: 100%;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
+}
+
+.container-btn{
+    width: 250px;
+}
+.dangerbtn{
+    background-color: white;
+    border: 2px solid red;
+    color: red;
+    width: 110px;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+.imagebtn{
+    background-color: #514AFF;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+
+.submitbtn{
+    background-color: #514AFF;
+    border: none;
+    color: white;
+    width: 110px;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+
+ul.breadcrumb {
+    list-style: none;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: black;
+}
+
+.list {
+    font-size: 13pt;
+}
+
+.submenu{
+    margin-left: 30px;
 }
 
 .alert.alert-danger {
@@ -203,6 +272,15 @@ input{
     border: none;
     border-radius: 30px;
     width: 125px;
+}
+
+.btn_row{
+    background: #514AFF;
+    color: white;
+    font-size: 12pt;
+    border: none;
+    border-radius: 30px;
+    width: 75px;
 }
 
 .icon{

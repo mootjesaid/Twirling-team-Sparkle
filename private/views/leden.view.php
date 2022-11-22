@@ -7,17 +7,22 @@
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Leden
+                Actieve leden
             </div>
         </div>
-        <div class="d-flex align-items-center p-2 ">
-
+        <div class="d-flex align-items-center p-2">
+            <div  class="d-flex pt-3 justify-content-center">
+                <ul class="breadcrumb">
+                    <li><a href="<?=ROOT?>/home">Dashboard</a></li>
+                    <li>Actieve leden</li>
+                </ul>
+            </div>
         </div>
     </div>
 
     <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
         <i class="icon" data-feather="user"></i>
-        <a href="<?=ROOT?>/teams/add">
+        <a href="<?=ROOT?>/leden/add">
             <button class="btn_add p-2"></i>Lid toevoegen</button>
         </a>
     </div>
@@ -72,7 +77,7 @@
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>No teams were found at this time</h4>
+                <h4>Er zijn op dit moment geen teams gevonden</h4>
             <?php endif;?>
 
             </tbody>

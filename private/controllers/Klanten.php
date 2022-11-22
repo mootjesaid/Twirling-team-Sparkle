@@ -23,6 +23,24 @@ class Klanten extends Controller
 
     }
 
+    public function inactive()
+    {
+        //code..
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
+        $klant = new Klant();
+
+        $data = $klant->where('actief', 'nee');
+
+        $this->view('klanten',[
+            'rows'=>$data,
+        ]);
+
+    }
+
     public function add()
     {
         if(!Auth::logged_in())

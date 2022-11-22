@@ -131,8 +131,6 @@ class Model extends Database
     public function insertPasswordReset($data)
     {
 
-
-
             foreach($this->beforeInsert as $func)
             {
                 $data = $this->$func($data);
@@ -147,6 +145,7 @@ class Model extends Database
 
         return $this->query($query,$data);
     }
+
 
     public function update($id,$data)
     {

@@ -12,10 +12,10 @@ class Beheer extends Controller
         {
             $this->redirect('login');
         }
-        $lid = new User();
+        $lid = new Lid();
         $team = new Team();
 
-        $team = $team->where('id', $team_id);
+        $teams = $team->where('id', $team_id);
 
 
         $row = $lid->where('team_id', $team_id);
@@ -26,7 +26,7 @@ class Beheer extends Controller
         $this->view('beheer',[
             'crumbs'=>$crumbs,
             'rows'=>$row,
-            'team'=>$team
+            'team'=>$teams
         ]);
 
     }

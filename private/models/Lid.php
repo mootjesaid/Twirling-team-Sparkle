@@ -15,6 +15,7 @@ class Lid extends Model
         'telefoonnummer',
         'email',
         'datum',
+        'actief',
     ];
 
 

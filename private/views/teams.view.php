@@ -10,8 +10,13 @@
                 Teams
             </div>
         </div>
-        <div class="d-flex align-items-center p-2 ">
-            <?php $this->view('includes/crumbs',['crumbs'=>$crumbs])?>
+        <div class="d-flex align-items-center p-2">
+            <div  class="d-flex pt-3 justify-content-center">
+                <ul class="breadcrumb">
+                    <li><a href="<?=ROOT?>/home">Dashboard</a></li>
+                    <li>Teams</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -30,6 +35,7 @@
             <thead>
             <tr>
                 <th>Team</th>
+                <th>Leden</th>
                 <th>Datum</th>
                 <th>Actie</th>
             </tr>
@@ -41,20 +47,26 @@
 
                     <tr>
                         <td><?=$row->naam?></td>
+                        <td>
+                            <a href="<?=ROOT?>/beheer/<?=$row->id?>">
+                                <button class="btn_row"></i>Beheren</button>
+                            </a>
+                        </td>
                         <td><?=get_date($row->datum)?></td>
                         <td>
-                            <a href="<?=ROOT?>/teams/delete/<?=$row->id?>">
-                                <input class="btn btn-danger float-end" type="submit" value="Delete"></button>
+                            <a class="" href="<?=ROOT?>/teams/edit/<?=$row->id?>">
+                                <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
-                            <a href="<?=ROOT?>/beheer/<?=$row->id?>">
-                                <button class="btn btn btn-info"><i>beheren</i></button>
+
+                            <a class="" href="<?=ROOT?>/teams/delete/<?=$row->id?>">
+                                <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
                             </a>
                         </td>
                     </tr>
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>No teams were found at this time</h4>
+                <h4>Er zijn op dit moment geen teams gevonden</h4>
             <?php endif;?>
 
             </tbody>

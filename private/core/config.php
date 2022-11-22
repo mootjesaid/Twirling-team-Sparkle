@@ -1,9 +1,9 @@
 <?php
 
-define('ROOT', 'http://twirlingteamsparkle.nl/Twirling-team-Sparkle/public');
-define('ASSETS', 'http://localhost/Twirling-team-Sparkle/public/assets');
+define('ROOT', 'http://twirlingteamsparkle.nl/public');
+define('ASSETS', 'http://twirlingteamsparkle.nl/public/assets');
 
-define('DBNAME', 'db_twirling_team_sparkle');
+define('DBNAME', 'db_twirling_team_sparkle');   
 define('DBHOST', 'localhost');
 define('DBUSER', 'root');
 define('DBPASS', '');

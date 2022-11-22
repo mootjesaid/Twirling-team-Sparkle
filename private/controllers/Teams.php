@@ -14,7 +14,6 @@ class Teams extends Controller
         }
 
         $team = new Team();
-
         $data = $team->findAll();
 
         $crumbs[] = ['Dashboard','home'];
@@ -22,7 +21,8 @@ class Teams extends Controller
 
         $this->view('teams',[
             'crumbs'=>$crumbs,
-            'rows'=>$data
+            'rows'=>$data,
+
         ]);
     }
 

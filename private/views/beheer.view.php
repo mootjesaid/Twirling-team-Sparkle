@@ -8,10 +8,10 @@
             </div>
             <div class="d-flex title justify-content-center">
 
-               <!-- --><?php /*foreach ($team as $obj)
+                <?php foreach ($team as $obj)
                 {
                     echo "Team ".$obj->naam;
-                }*/?>
+                }?>
             </div>
         </div>
         <div class="d-flex align-items-center p-2 ">
@@ -33,9 +33,14 @@
         <table id="tabel" class="table table-striped">
             <thead>
             <tr>
-                <th>Voornaam</th>
-                <th>Achternaam</th>
-                <th>Actie</th>
+                <th>Image</th>
+                <th>Naam</th>
+                <th>Adres</th>
+                <th>Woonplaats</th>
+                <th>telefoonnummer</th>
+                <th>email</th>
+                <th>Datum</th>
+                <th>Acties</th>
             </tr>
             </thead>
             <tbody>
@@ -43,19 +48,31 @@
 
                 <?php foreach ($rows as $row):?>
 
-                    <tr>
-                        <td><?=$row->voornaam?></td>
-                        <td><?=$row->achternaam?></td>
+                    <?php
+                    $image = get_image($row->image);
+                    ?>
+                    <tr class="align-middle">
+                        <td style="width: 75px">
+                            <div class="">
+                                <img src="<?=$image?>" class="border border-primary d-block rounded-circle " style="width:55px;">
+                            </div>
+                        </td>
+                        <td><?=$row->voornaam?><br><?=$row->achternaam?></td>
+                        <td><?=$row->adres?></td>
+                        <td><?=$row->woonplaats?></td>
+                        <td><?=$row->telefoonnummer?></td>
+                        <td><?=$row->email?></td>
+                        <td><?=get_date($row->datum)?></td>
                         <td>
-                            <a href="<?=ROOT?>/beheer/delete/<?=$row->id?>">
-                                <input class="btn btn-danger float-end" type="submit" value="Delete"></button>
+                            <a class="" href="<?=ROOT?>/beheer/delete/<?=$row->id?>">
+                                <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
                             </a>
                         </td>
                     </tr>
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>No Leden were found at this time</h4>
+                <h4>Er zijn op dit moment geen teams gevonden</h4>
             <?php endif;?>
 
             </tbody>
