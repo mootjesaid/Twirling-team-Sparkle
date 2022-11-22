@@ -7,14 +7,14 @@
             <i class="icon2" data-feather="user-plus"></i>
         </div>
         <div class="d-flex title justify-content-center">
-            Lid toevoegen
+            Klant toevoegen
         </div>
     </div>
     <div class="d-flex align-items-center p-2">
         <div  class="d-flex pt-3 justify-content-center">
             <ul class="breadcrumb">
                 <li><a href="<?=ROOT?>/home">Dashboard</a></li>
-                <li><a href="<?=ROOT?>/leden">Actieve leden</a></li>
+                <li><a href="<?=ROOT?>/klanten">Actieve klanten</a></li>
                 <li>Toevoegen</li>
             </ul>
         </div>
@@ -108,7 +108,7 @@
                         </table>
 
                         <div class="container-btn p-2 d-flex justify-content-between float-end">
-                            <a href="<?=ROOT?>/leden">
+                            <a href="<?=ROOT?>/klanten">
                                 <button type="button" class="dangerbtn">Annuleer</button>
                             </a>
                             <button class="submitbtn">Opslaan</button>

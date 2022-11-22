@@ -125,7 +125,7 @@ class Leden extends Controller
         if(count($_POST) > 0)
         {
 
-            if($leden->validate($_POST))
+            if($leden->validate2($_POST))
             {
 
                 if (array_key_exists('image', $_POST)) {
@@ -140,6 +140,7 @@ class Leden extends Controller
                         echo $filename . ', afbeelding bestaat niet';
                     }
                 }
+
 
                 if(count($_FILES) > 0)
                 {
@@ -163,7 +164,7 @@ class Leden extends Controller
 
                 }
                $leden->update($id,$_POST);
-                $this->redirect('leden');
+                //$this->redirect('leden');
             }else
             {
                 //errors

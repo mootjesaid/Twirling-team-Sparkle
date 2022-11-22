@@ -1,3 +1,5 @@
+<?php $this->view('includes/head')?>
+
 <?php
 $con = mysqli_connect("localhost", "root", "", "db_twirling_team_sparkle");
 if (mysqli_connect_errno()) {
@@ -7,144 +9,35 @@ if (mysqli_connect_errno()) {
 date_default_timezone_set('Asia/Kolkata');
 $error = "";
 ?>
-<!---->
-<?php
-//use PHPMailer\PHPMailer\PHPMailer;
-//?>
-<!---->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Password Recovery using PHP and MySQL</title>-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-<!--</head>-->
-<!--<body>-->
-<!---->
-<!--<div class="container-fluid">-->
-<!--    <div class="row">-->
-<!--        <div class="col-md-4"></div>-->
-<!--        <div class="col-md-4">-->
-<!---->
-<!--            <h2>Forgot Password</h2>-->
-<!---->
-<!--            --><?php
-//
-//            if (isset($_POST["email"]) && (!empty($_POST["email"]))) {
-//                $email = $_POST["email"];
-//                $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-//                $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-//                if (!$email) {
-//                    $error .="Invalid email address";
-//                } else {
-//                    $sel_query = "SELECT * FROM `user` WHERE email='" . $email . "'";
-//                    $results = mysqli_query($con, $sel_query);
-//                    $row = mysqli_num_rows($results);
-//                    if ($row == "") {
-//                        $error .= "User Not Found";
-//                    }
-//                }
-//                if ($error != "") {
-//                    echo $error;
-//                } else {
-//
-//                    $output = '';
-//
-//                    $expFormat = mktime(date("H"), date("i"), date("s"), date("m"), date("d") + 1, date("Y"));
-//                    $expDate = date("Y-m-d H:i:s", $expFormat);
-//                    $key = md5(time());
-//                    $addKey = substr(md5(uniqid(rand(), 1)), 3, 10);
-//                    $key = $key . $addKey;
-//                    // Insert Temp Table
-//                    mysqli_query($con, "INSERT INTO `user` (`email`, `verify_token`) VALUES ('" . $email . "', '" . $key . "');");
-//
-//
-//                    $output.='<p>Give me ur password >:(</p>';
-//                    //replace the site url
-//                    $output.='<p><a href="http://localhost/tutorial/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/tutorial/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
-//                    $body = $output;
-//                    $subject = "Password Recovery";
-//
-//                    $email_to = $email;
-//
-//
-//                    //autoload the PHPMailer
-//                    require('C:/xampp/htdocs/Twirling-team-Sparkle/vendor/autoload.php');
-//                    $mail = new PHPMailer();
-//                    $mail->IsSMTP();
-//                    $mail->Host = "smtp.gmail.com"; // Enter your host here
-//                    $mail->SMTPAuth = true;
-//                    $mail->Username = "mootjje07@gmail.com"; // Enter your email here
-//                    $mail->Password = "wqgwwudffhrlhjhi"; //Enter your passwrod here
-//                    $mail->Port = 587;
-//                    $mail->IsHTML(true);
-//                    $mail->From = "mootjje07@gmail.com";
-//                    $mail->FromName = "Twirling team";
-//
-//                    $mail->Subject = $subject;
-//                    $mail->Body = $body;
-//                    $mail->AddAddress($email_to);
-//                    if (!$mail->Send()) {
-//                        echo "Mailer Error: " . $mail->ErrorInfo;
-//                    } else {
-//                        echo "An email has been sent";
-//                    }
-//                }
-//            }
-//            ?>
-<!--            <form method="post" action="" name="reset">-->
-<!---->
-<!---->
-<!--                <div class="form-group">-->
-<!--                    <label><strong>Enter Your Email Address:</strong></label>-->
-<!--                    <input type="email" name="email" placeholder="username@email.com" class="form-control"/>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="form-group">-->
-<!--                    <input type="submit" id="reset" value="Reset Password"  class="btn btn-primary"/>-->
-<!--                </div>-->
-<!--            </form>-->
-<!---->
-<!--        </div>-->
-<!--        <div class="col-md-4"></div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 ?>
-<html>
-<head>
-    <title>Password Recovery using PHP and MySQL</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
 
-            <h2>Forgot Password</h2>
+
+
+
 
             <?php
-
+            $succes = "";
+            $errors = "";
             if (isset($_POST["email"]) && (!empty($_POST["email"]))) {
                 $email = $_POST["email"];
                 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
                 $email = filter_var($email, FILTER_VALIDATE_EMAIL);
                 if (!$email) {
-                    $error .="Invalid email address";
-                } else {
-                    $sel_query = "SELECT * FROM `user` WHERE email='" . $email . "'";
-                    $results = mysqli_query($con, $sel_query);
+                    $error .="<p>Invalid email address please type a valid email address!</p>";
+                }else{
+                    $sel_query = "SELECT * FROM `user` WHERE email='".$email."'";
+                    $results = mysqli_query($con,$sel_query);
                     $row = mysqli_num_rows($results);
-                    if ($row == "") {
-                        $error .= "User Not Found";
+                    if ($row=="0"){
+                        $error .= "<p>Er is geen gebruiker met dit email adres</p>";
                     }
                 }
-                if ($error != "") {
-                    echo $error;
+                if($error!=""){
+                     $errors = $error;
                 } else {
 
                     $output = '';
@@ -186,27 +79,38 @@ use PHPMailer\PHPMailer\PHPMailer;
                     if (!$mail->Send()) {
                         echo "Mailer Error: " . $mail->ErrorInfo;
                     } else {
-                        echo "An email has been sent";
+                        $succes = "Er is een e-mail naar u verzonden voor het opnieuw instellen van uw wachtwoord";
                     }
                 }
             }
             ?>
-            <form method="post" action="" name="reset">
 
+<div class="container-fluid">
 
-                <div class="form-group">
-                    <label><strong>Enter Your Email Address:</strong></label>
-                    <input type="email" name="email" placeholder="username@email.com" class="form-control"/>
+    <form method="post" action="" name="reset">
+
+        <div class="p-4 mx-auto mr-4 shadow rounded " style="margin-top: 200px;width:100%;max-width: 340px;">
+            <img src="<?=ROOT?>/assets/Images/sparkle_twirling.png" class=" d-block mx-auto" style="width:200px;">
+            <h3>Wachtwoord herstellen</h3>
+            <?php if($succes):?>
+                <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
+
+                        <?=$succes?>
+                    </span>
                 </div>
+            <?php endif;?>
+            <?php if($errors):?>
+                <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
 
-                <div class="form-group">
-                    <input type="submit" id="reset" value="Reset Password"  class="btn btn-primary"/>
+                    <?=$error?>
+                    </span>
                 </div>
-            </form>
-
+            <?php endif;?>
+            <input class="form-control" value="<?=get_var('email')?>" type="email" name="email" placeholder="Email" autofocus autocomplete="off">
+            <br>
+                <button type="submit" id="reset" class="btn btn-primary">Login</button>
         </div>
-        <div class="col-md-4"></div>
-    </div>
+
+    </form>
 </div>
-</body>
-</html>
+

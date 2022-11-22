@@ -14,14 +14,26 @@
                 }?>
             </div>
         </div>
-        <div class="d-flex align-items-center p-2 ">
-            <?php $this->view('includes/crumbs',['crumbs'=>$crumbs])?>
+        <div class="d-flex align-items-center p-2">
+            <div  class="d-flex pt-3 justify-content-center">
+                <ul class="breadcrumb">
+                    <li><a href="<?=ROOT?>/home">Dashboard</a></li>
+                    <li><a href="<?=ROOT?>/teams">Teams</a></li>
+                    <li><?php foreach ($team as $obj)
+                        {
+                            echo "Team ".$obj->naam;
+                        }?></li>
+                </ul>
+            </div>
         </div>
     </div>
 
     <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
         <i class="icon" data-feather="user"></i>
-        <a href="<?=ROOT?>/teams/add">
+        <a class="" href="<?=ROOT?>/beheer/overzicht/<?php foreach ($team as $obj)
+        {
+            echo $obj->id;
+        }?>">
             <button class="btn_add p-2"></i>Lid toevoegen</button>
         </a>
     </div>
@@ -72,7 +84,7 @@
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>Er zijn op dit moment geen teams gevonden</h4>
+                <h4>Er zijn op dit moment geen leden in deze team gevonden</h4>
             <?php endif;?>
 
             </tbody>

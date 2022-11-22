@@ -13,10 +13,7 @@ class Klant extends Model
         'telefoonnummer',
         'email',
         'datum',
-    ];
-
-    protected $beforeInsert = [
-        'hash_wachtwoord'
+        'actief',
     ];
 
     public  function validate($DATA)
@@ -48,36 +45,12 @@ class Klant extends Model
             $this->errors['email'] = "Dit e-mail is niet beschikbaar ";
         }
 
-        //check rol
-        $rollen = ['admin','medewerker'];
-        if(empty($DATA['rol']) || !in_array($DATA['rol'], $rollen))
-        {
-            $this->errors['rol'] = "Kies een rol";
-        }
-
-        //check wachtwoorden
-        if (empty($row->wachtwoord)) {
-            if (empty($_POST['wachtwoord']) || empty($DATA['wachtwoord']) || $DATA['wachtwoord'] != $DATA['wachtwoord2']) {
-                $this->errors['wachtwoord'] = "Wachtwoorden komen niet overeen";
-            }
-        }
-
-        //check wachtwoord lengte
-        if (empty($row->wachtwoord)){
-
-        }
-
 
         if (count($this->errors) == 0)
         {
             return true;
         }
         return false;
-    }
-    public function hash_wachtwoord($data)
-    {
-        $data['wachtwoord'] = password_hash($data['wachtwoord'], PASSWORD_DEFAULT);
-        return $data;
     }
 
     public  function validate2($DATA)
@@ -123,13 +96,6 @@ class Klant extends Model
         if($this->whereEmail('email',$DATA['email'], 'id', $DATA['id']))
         {
             $this->errors['email'] = "Dit e-mail is niet beschikbaar ";
-        }
-
-        //check rol
-        $rollen = ['admin','medewerker'];
-        if(empty($DATA['rol']) || !in_array($DATA['rol'], $rollen))
-        {
-            $this->errors['rol'] = "Kies een rol";
         }
 
 

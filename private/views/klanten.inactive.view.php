@@ -10,20 +10,19 @@
                 Klanten
             </div>
         </div>
-        <div class="d-flex align-items-center p-2 ">
-
+        <div class="d-flex align-items-center p-2">
+            <div  class="d-flex pt-3 justify-content-center">
+                <ul class="breadcrumb">
+                    <li><a href="<?=ROOT?>/home">Dashboard</a></li>
+                    <li>Inactieve klanten</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
-        <i class="icon" data-feather="user"></i>
-        <a href="<?=ROOT?>/teams/add">
-            <button style="width: 150px" class="btn_add p-2"></i>Klant toevoegen</button>
-        </a>
-    </div>
-    </div>
 
-    <div class="container-bg">
+
+    <div class="container-bg mt-5">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
 
         <table id="tabel" class="table table-striped">

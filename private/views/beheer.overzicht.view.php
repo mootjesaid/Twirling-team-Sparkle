@@ -7,14 +7,22 @@
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Klanten
+                Voeg een lid toe aan <?php foreach ($team as $obj)
+                {
+                    echo "team ".$obj->naam;
+                }?>
             </div>
         </div>
         <div class="d-flex align-items-center p-2">
             <div  class="d-flex pt-3 justify-content-center">
                 <ul class="breadcrumb">
                     <li><a href="<?=ROOT?>/home">Dashboard</a></li>
-                    <li>Actieve klanten</li>
+                    <li><a href="<?=ROOT?>/teams">Teams</a></li>
+                    <li><a href="<?=ROOT?>/teams"><?php foreach ($team as $obj)
+                            {
+                                echo "Team ".$obj->naam;
+                            }?></a></li>
+                    <li>Voeg een lid toe aan team sparkle</li>
                 </ul>
             </div>
         </div>
@@ -22,11 +30,9 @@
 
     <div class="container-bg1 action-bar d-flex justify-content-end mt-3 mb-3">
         <i class="icon" data-feather="user"></i>
-        <a href="<?=ROOT?>/klanten/add">
-            <button style="width: 150px" class="btn_add p-2"></i>Klant toevoegen</button>
-        </a>
+
     </div>
-    </div>
+
 
     <div class="container-bg">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
@@ -48,6 +54,7 @@
             <?php if($rows):?>
 
                 <?php foreach ($rows as $row):?>
+
                     <?php
                     $image = get_image($row->image);
                     ?>
@@ -64,12 +71,11 @@
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
                         <td>
-                            <a class="" href="<?=ROOT?>/klanten/edit/<?=$row->id?>">
-                                <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
-                            </a>
-
-                            <a class="" href="<?=ROOT?>/klanten/delete/<?=$row->id?>">
-                                <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
+                            <a href="<?=ROOT?>/beheer/add/<?=$row->id?>/<?php foreach ($team as $obj)
+                            {
+                                echo $obj->id;
+                            }?>"">
+                                <button style="width: 120px" class="btn_row"></i>Toevoegen</button>
                             </a>
                         </td>
                     </tr>

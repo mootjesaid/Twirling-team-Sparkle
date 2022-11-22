@@ -1,3 +1,4 @@
+<?php $this->view('includes/head')?>
 <?php
 $con = mysqli_connect("localhost", "root", "", "db_twirling_team_sparkle");
 if (mysqli_connect_errno()) {
@@ -7,13 +8,6 @@ if (mysqli_connect_errno()) {
 date_default_timezone_set('Asia/Kolkata');
 $error = "";
 ?>
-
-<html>
-<head>
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
 
 <div class="container-fluid">
     <div class="row">
@@ -34,27 +28,29 @@ $error = "";
                     $expDate = $row['expDate'];
                     if ($expDate >= $curDate) {
                         ?>
-                        <h2>Reset Password</h2>
+            <div class="p-4 mx-auto mr-4 shadow rounded " style="margin-top: 200px;width:100%;max-width: 340px;">
+                <img src="<?=ROOT?>/assets/Images/sparkle_twirling.png" class=" d-block mx-auto" style="width:200px;">
+                <h3>Wachtwoord herstellen</h3>
                         <form method="post" action="" name="update">
 
                             <input type="hidden" name="action" value="update" class="form-control"/>
 
 
                             <div class="form-group">
-                                <label><strong>Enter New Password:</strong></label>
+                                <label>Voer een nieuw wachtwoord in</label>
                                 <input type="password"  name="pass1" value="update" class="form-control"/>
                             </div>
 
-                            <div class="form-group">
-                                <label><strong>Re-Enter New Password:</strong></label>
+
+                                <label>Herhaal nieuw wachtwoord</label>
                                 <input type="password"  name="pass2" value="update" class="form-control"/>
-                            </div>
                             <input type="hidden" name="email" value="<?php echo $email; ?>"/>
                             <div class="form-group">
                                 <input type="submit" id="reset" value="Reset Password"  class="btn btn-primary"/>
                             </div>
 
                         </form>
+            </div>
                         <?php
                     } else {
                         $error .= "<h2>Link Expired</h2>>";
@@ -84,7 +80,7 @@ $error = "";
 
                     mysqli_query($con, "DELETE FROM `password_reset_temp` WHERE `email` = '$email'");
 
-                    echo '<div class="error"><p>Congratulations! Your password has been updated successfully.</p>';
+                    header("Location: http://twirlingteamsparkle.nl/public/login");
                 }
             }
             ?>
@@ -95,5 +91,3 @@ $error = "";
 </div>
 
 
-</body>
-</html>

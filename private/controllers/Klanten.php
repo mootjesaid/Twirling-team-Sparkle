@@ -35,7 +35,7 @@ class Klanten extends Controller
 
         $data = $klant->where('actief', 'nee');
 
-        $this->view('klanten',[
+        $this->view('klanten.inactive',[
             'rows'=>$data,
         ]);
 
@@ -54,6 +54,40 @@ class Klanten extends Controller
             $klant = new Klant();
             if($klant->validate($_POST))
             {
+                if (array_key_exists('image', $_POST)) {
+                    $string = trim($_POST['image'], 'uploads');
+                    $image = str_replace('/', '\\', $string);;
+                    $path = $_SERVER['DOCUMENT_ROOT'] . '/Twirling-team-Sparkle/public/uploads/'.$image;
+                    $filename = realpath($path);
+                    if (file_exists($filename)) {
+                        unlink($filename);
+                        echo 'File ' . $filename . ' is verwijderd';
+                    } else {
+                        echo $filename . ', afbeelding bestaat niet';
+                    }
+                }
+
+                if(count($_FILES) > 0)
+                {
+
+                    //we have an image
+                    $allowed[] = "image/jpeg";
+                    $allowed[] = "image/png";
+
+                    if($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed))
+                    {
+                        $folder = "uploads";
+                        if(!file_exists($folder)){
+                            mkdir($folder);
+                        }
+                        $uniquesavename = uniqid(rand());
+                        $destination = $folder. "/" . $uniquesavename . '.jpg';;
+                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+                        $_POST['image'] = $destination;
+
+                    }
+
+                }
 
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
@@ -85,7 +119,7 @@ class Klanten extends Controller
         if(count($_POST) > 0)
         {
 
-            if($klant->validate($_POST))
+            if($klant->validate2($_POST))
             {
 
                 if (array_key_exists('image', $_POST)) {
@@ -151,10 +185,10 @@ class Klanten extends Controller
         if(count($_POST) > 0)
         {
 
-            if($klant->validate($_POST))
+            if($klant->validate2($_POST))
             {
                 $klant->update($id,$_POST);
-                $this->redirect('klanten');
+                $this->redirect('leden');
             }else
             {
                 //errors
@@ -168,7 +202,7 @@ class Klanten extends Controller
             'row'=>$row,
             'errors'=>$errors,
         ]);
-    }
 
+    }
 
 }

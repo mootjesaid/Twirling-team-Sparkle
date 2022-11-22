@@ -80,11 +80,8 @@ ul.breadcrumb li a:hover {
     margin-left: 30px;
 }
 
-.alert.alert-danger {
-    background-color: rgba(248, 215, 218, 1);
-    border-color: rgba(220, 53, 69, 1);
-    color: rgba(114, 28, 36,1);
-}
+
+
 
 .container403 {
     height: 99vh;
@@ -156,6 +153,15 @@ canvas#klanten{
     border-radius: 8px;
 }
 
+.container-bg2{
+    background: white;
+    width: 40%;
+    margin-left: 280px;
+    border-radius: 8px;
+    overflow: auto;
+    height: 250px;
+}
+
 .container-bg1{
     width: 80%;
     margin-left: 280px;
@@ -167,7 +173,7 @@ canvas#klanten{
     width: 50px;
     height: 50px;
     border-radius: 8px;
-}
+}x
 
 .card-groub-bg
 {
@@ -275,7 +281,7 @@ input{
 }
 
 .btn_row{
-    background: #514AFF;
+    background: #120D91;
     color: white;
     font-size: 12pt;
     border: none;

@@ -6,22 +6,22 @@
                 <div class=" d-flex flex-row m-3">
                     <div class="pe-3  ">
                         <div class='c-avatar pt-1 '>
-                            <img class='c-avatar__image' src='https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' alt=''>
+                            <img src="<?=Auth::getImage() ?>" class=" c-avatar__image  d-block rounded-circle">
                             <span class='c-avatar__status'></span>
                         </div>
                     </div>
                     <div class="p2">
-                        <a>Mohamed Said</a><br>
-                        <a>Titel</a>
+                        <a><?=Auth::getVoornaam() ?></a><br>
+                        <a><?=Auth::getAchternaam() ?></a>
                     </div>
                 </div>
             </div>
 
             <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
 
-            <li><a class="<?php if($actual_link == ROOT.'/home'){ echo ' active"';}?>" href="<?=ROOT?>/home"><i class="icon-nav" data-feather="home"></i>Dashboard</a></li>
+            <li><a class="<?php if($actual_link == ROOT.'/home'){ echo ' active"';}?>" href="<?=ROOT?>/home"><i class="icon-nav" data-feather="users"></i>Dashbboard</a></li>
             <?php if(Auth::access('admin')):?>
-            <li><a  href="<?=ROOT?>/users"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
+            <li><a class="<?php if($actual_link == ROOT.'/users'){ echo ' active"';}?>" href="<?=ROOT?>/users"><i class="icon-nav" data-feather="user"></i>Medewerkers</a></li>
             <?php endif; ?>
             <li class="dropdown-btn"><a class=" <?php if($actual_link == ROOT.'/leden' || $actual_link == ROOT.'/leden/inactive'){ echo ' active"';}?>" href="#"><i class="icon-nav" data-feather="user"></i>Leden<i style="margin-left: 120px" class="icon-nav" data-feather="chevron-down"></i></a></li>
             <li style="display: block" class="dropdown-container">

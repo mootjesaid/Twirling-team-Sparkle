@@ -21,16 +21,16 @@
     </div>
 </div>
 
-<div class="shadow-sm" style="margin-top: 50px">
+<div class="shadow-sm" style="margin-top: 30px">
     <?php if($row):?>
 
 
-        <div class="container-bg  ">
+        <div class="container-bg">
             <?php
             $image = get_image($row[0]->image);
             ?>
             <form method="post" enctype="multipart/form-data">
-                <div class="p-2  mr-4" style="margin-top: 50px">
+                <div class="p-2  mr-4">
                     <div class="d-flex align-items-center p-1">
                         <div class="icon-container d-flex align-items-center justify-content-center">
                             <i class="icon2" data-feather="file-text"></i>
@@ -49,7 +49,7 @@
                             </span>
                         </div>
                     <?php endif;?>
-                    <div class=" pt-3 ps-3  action-bar d-flex justify-content-between">
+                    <div class=" pt-3 ps-1  action-bar d-flex justify-content-between">
 
                         <div class="col-sm-4 col-md-3 flex-grow-1">
 
@@ -107,7 +107,7 @@
                             </table>
 
                             <div class="container-btn d-flex p-2 justify-content-between float-end">
-                                <a href="<?=ROOT?>/leden">
+                                <a href="<?=ROOT?>/klanten">
                                     <button type="button" class="dangerbtn">Annuleer</button>
                                 </a>
                                 <button class="submitbtn">Opslaan</button>

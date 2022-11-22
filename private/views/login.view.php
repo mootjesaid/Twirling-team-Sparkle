@@ -18,7 +18,7 @@
 
             <input class="form-control" value="<?=get_var('email')?>" type="email" name="email" placeholder="Email" autofocus autocomplete="off">
             <br>
-            <input class="form-control" value="<?=get_var('wachtwoord')?>" type="wachtwoord" name="wachtwoord" placeholder="wachtwoord">
+            <input class="form-control" value="<?=get_var('wachtwoord')?>" type="password" name="wachtwoord" placeholder="wachtwoord">
             <br>
 
             <div class="d-flex justify-content-between">
