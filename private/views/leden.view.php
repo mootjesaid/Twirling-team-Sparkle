@@ -68,6 +68,7 @@
                 <th>email</th>
                 <th>Datum</th>
                 <th>Eind datum</th>
+                <th>Status</th>
                 <th>Acties</th>
             </tr>
             </thead>
@@ -92,6 +93,9 @@
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
                         <td><?=get_date($row->eind_datum)?></td>
+                        <td style="color: <?php if ($row->actief == 'actief'){
+                            echo "#4BB543";
+                        } ?>" ><?=$row->actief?></td>
                         <td>
                             <a class="" href="<?=ROOT?>/leden/edit/?<?=$row->id?>">
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>

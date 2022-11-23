@@ -1,8 +1,7 @@
 
 <form id="deleteForm" method="post">
 
-    <input autofocus class="my-2 form-control" value="NULL" type="text" name="id" placeholder="id">
-    <input autofocus class="my-2 form-control" value="<?=get_var('naam',$row[0]->naam)?>" type="text" name="naam" placeholder="naam">
+    <input autofocus class="my-2 form-control" value="NULL" type="text" name="team_id" placeholder="id">
 
     <input type="hidden" name="id">
     <input class="btn btn-danger float-end" type="submit" value="Verwijderen">

@@ -43,9 +43,6 @@
                             <?=Auth::getVoornaam() ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end mt-4" aria-labelledby="navbarDropdownMenuLink" style="background: #EEEEEE"  >
-                            <a class="dropdown-item" href="<?=ROOT?>/profile">Profile</a>
-                            <a class="dropdown-item" href="<?=ROOT?>">Dashboard</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?=ROOT?>/logout">Logout</a>
                         </div>
                     </li>

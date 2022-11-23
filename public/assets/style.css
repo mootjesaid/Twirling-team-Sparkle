@@ -120,12 +120,11 @@ canvas#klanten{
     color: red;
 }
 
-
 .chart{
     background: white;
     border-radius: 8px;
     width: 800px;
-    height: 500px;
+    height: 420px;
 }
 
 .statusCard{
@@ -179,7 +178,7 @@ canvas#klanten{
     width: 50px;
     height: 50px;
     border-radius: 8px;
-}x
+}
 
 .card-groub-bg
 {

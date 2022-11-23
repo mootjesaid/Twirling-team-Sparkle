@@ -15,7 +15,7 @@ class Leden extends Controller
 
         $lid = new Lid();
 
-        $data = $lid->where('actief', 'ja');
+        $data = $lid->where('actief', 'actief');
 
         $this->view('leden',[
             'rows'=>$data,
@@ -29,7 +29,7 @@ class Leden extends Controller
 
         $lid = new Lid();
 
-        $data = $lid->where('actief', 'nee');
+        $data = $lid->where('actief', 'inactief');
 
         $this->view('leden.inactive',[
             'rows'=>$data,
@@ -201,6 +201,8 @@ class Leden extends Controller
 
             if($lid->validate2($_POST))
             {
+
+                $_POST['eind_datum'] = date("Y-m-d H:i:s");
                 $lid->update($id,$_POST);
                 $this->redirect('leden?delete='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_gedeactiveerd');
             }else
@@ -233,6 +235,10 @@ class Leden extends Controller
 
             if($lid->validate2($_POST))
             {
+
+                $future_timestamp = strtotime("+1 month");
+                $_POST['eind_datum'] = date('Y-m-d H:i:s', $future_timestamp);
+
                 $lid->update($id,$_POST);
                 $this->redirect('leden/inactive?succes='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_geactiveerd');
 

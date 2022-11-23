@@ -21,18 +21,18 @@ class Home extends Controller
         $aantalklanten = $klant->findAll();
         $aantalteams = $team->findAll();
 
-        $active = $lid->where('actief', 'ja');
-        $inactive = $lid->where('actief', 'nee');
+        $active = $lid->where('actief', 'actief');
+        $inactive = $lid->where('actief', 'inactief');
 
-        $activeKlanten = $klant->where('actief', 'ja');
-        $inactiveKlanten = $klant->where('actief', 'nee');
+        $activeKlanten = $klant->where('actief', 'actief');
+        $inactiveKlanten = $klant->where('actief', 'inactief');
 
 
         $this->view('home',[
             'inactive'=>$inactive,
             'active'=>$active,
             'inactive_klanten'=>$inactiveKlanten,
-            'active_klanten'=>$aantalklanten,
+            'active_klanten'=>$activeKlanten,
             'leden'=>$aantalleden,
             'klanten'=>$aantalklanten,
             'teams'=>$aantalteams,

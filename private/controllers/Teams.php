@@ -76,6 +76,7 @@ class Teams extends Controller
 
             if($teams->validate($_POST))
             {
+
                 $teams->update($id,$_POST);
                 $this->redirect('teams');
             }else
@@ -107,13 +108,15 @@ class Teams extends Controller
         }
 
         $teams = new Team();
-        $lid = new Team();
+        $lid = new Lid();
         $row = $teams->where('id', $id);
+        $leden = $lid->where('team_id', $id);
         $errors = array();
 
 
         if(count($_POST) > 0)
         {
+            $lid->update($leden[0]->id,$_POST);
             $teams->delete($id);
             $this->redirect('teams/?delete=Team_'.$row[0]->naam.'_is_verwijderd_');
 

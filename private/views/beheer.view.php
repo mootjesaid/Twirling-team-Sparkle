@@ -80,6 +80,8 @@
                 <th>telefoonnummer</th>
                 <th>email</th>
                 <th>Datum</th>
+                <th>Eind datum</th>
+                <th>Status</th>
                 <th>Acties</th>
             </tr>
             </thead>
@@ -103,6 +105,12 @@
                         <td><?=$row->telefoonnummer?></td>
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
+                        <td><?=get_date($row->eind_datum)?></td>
+                        <td style="color: <?php if ($row->actief == 'actief'){
+                            echo "#4BB543";
+                        }else{
+                            echo "red";
+                        } ?>" ><?=$row->actief?></td>
                         <td>
                             <a class="" href="<?=ROOT?>/beheer/deletefrom/<?=$row->id?>/<?php foreach ($team as $obj)
                             {

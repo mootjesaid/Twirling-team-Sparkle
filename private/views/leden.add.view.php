@@ -102,7 +102,7 @@
 
                                 </td>
                                 <td style="width: 300%; display: none">
-                                    <input class="my-2 form-control"  value="ja" type="text" name="actief" >
+                                    <input class="my-2 form-control"  value="actief" type="text" name="actief" >
                                 </td>
                             </tr>
                             <tr>
