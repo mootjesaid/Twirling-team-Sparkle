@@ -37,7 +37,6 @@
 
                     <?php if(count($errors) > 0):?>
                         <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
-                            <strong>Errors:</strong>
                             <?php foreach($errors as $error):?>
                                 <br><?=$error?>
                             <?php endforeach;?>

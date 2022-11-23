@@ -124,6 +124,8 @@ canvas#klanten{
 .chart{
     background: white;
     border-radius: 8px;
+    width: 800px;
+    height: 500px;
 }
 
 .statusCard{
@@ -136,7 +138,11 @@ canvas#klanten{
 .statusCardParent{
     border-radius: 5px;
     background: white;
+    font-weight: bold;
+}
 
+.aantal{
+    color: #120D91;
 }
 
 .title{
@@ -264,6 +270,14 @@ input{
 
 .icon-nav{
     padding-bottom: 6px;
+}
+
+.bg{
+    background-color: whitesmoke;
+}
+
+.bodyLogin{
+    background: #E2CA4F;
 }
 
 .info{

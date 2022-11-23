@@ -1,6 +1,7 @@
 
 <form id="deleteForm" method="post">
     <input autofocus class="my-2 form-control" value="nee" type="text" name="actief" placeholder="actief">
+    <input autofocus class="my-2 form-control" value="<?=get_var('voornaam',$row[0]->id)?>" type="text" name="id" placeholder="id">
     <input autofocus class="my-2 form-control" value="<?=get_var('voornaam',$row[0]->voornaam)?>" type="text" name="voornaam" placeholder="Voor naam">
     <input autofocus class="my-2 form-control" value="<?=get_var('achternaam',$row[0]->achternaam)?>" type="text" name="achternaam" placeholder="Achter naam">
     <input autofocus class="my-2 form-control"  value="<?=get_var('adres', $row[0]->adres)?>" type="text" name="adres" placeholder="adres" >

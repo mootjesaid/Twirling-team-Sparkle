@@ -29,9 +29,9 @@ function esc($var)
 
 function get_date($date)
 {
-
     return date("Y-m-d",strtotime($date));
 }
+
 
 function get_image($image)
 {
@@ -53,6 +53,25 @@ function show($data)
     print_r($data);
     echo "</pre>";
 }
+
+function addImage()
+{
+    $allowed[] = "image/jpeg";
+    $allowed[] = "image/png";
+
+    if ($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed)) {
+        $folder = "uploads";
+        if (!file_exists($folder)) {
+            mkdir($folder);
+        }
+        $uniquesavename = time() . uniqid(rand());
+        $destination = $folder . "/" . $uniquesavename . '.png';;
+        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+        $_POST['image'] = $destination;
+
+    }
+}
+
 
 
 

@@ -105,6 +105,14 @@
                                     <input class="my-2 form-control"  value="ja" type="text" name="actief" >
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td style="width: 300%; display: none">
+                                    <input class="my-2 form-control"  value="NULL" type="text" name="team_id" >
+                                </td>
+                            </tr>
                         </table>
 
                         <div class="container-btn p-2 d-flex justify-content-between float-end">

@@ -47,6 +47,7 @@
                 <th>telefoonnummer</th>
                 <th>email</th>
                 <th>Datum</th>
+                <th>Eind datum</th>
                 <th>Acties</th>
             </tr>
             </thead>
@@ -70,6 +71,7 @@
                         <td><?=$row->telefoonnummer?></td>
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
+                        <td><?=get_date($row->eind_datum)?></td>
                         <td>
                             <a href="<?=ROOT?>/beheer/add/<?=$row->id?>/<?php foreach ($team as $obj)
                             {
@@ -82,7 +84,9 @@
 
                 <?php endforeach;?>
             <?php else:?>
+            <div class="d-flex justify-content-center">
                 <h4>Er zijn op dit moment geen teams gevonden</h4>
+            </div>
             <?php endif;?>
 
             </tbody>

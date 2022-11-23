@@ -163,11 +163,12 @@ class Model extends Database
         return $this->query($query,$data);
     }
 
-    public function updateToken($email, $token)
+    public function addToTeam($id, $team_id)
     {
 
-        $data['email'] = $email;
-        $query = "update $this->table set verify_token = '$token' where email = :email";
+        $data['id'] = $id;
+        $data['team_id'] = $team_id;
+        $query = "update $this->table set team_id = '$team_id' where id = :id";
 
         return $this->query($query,$data);
     }
@@ -179,4 +180,6 @@ class Model extends Database
         $data['id'] = $id;
         return $this->query($query, $data);
     }
+
+
 }

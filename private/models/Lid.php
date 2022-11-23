@@ -14,6 +14,8 @@ class Lid extends Model
         'email',
         'datum',
         'actief',
+        'team_id',
+        'eind_datum'
     ];
 
     public  function validate($DATA)
@@ -31,6 +33,10 @@ class Lid extends Model
 
         {
             $this->errors['achternaam'] = "Achter naam mag alleen uit letters bestaan";
+        }
+
+        if(!is_numeric($DATA['telefoonnummer'])){
+            $this->errors['telefoonnummer'] = "Telefoonnummer mag alleen uit cijfers bestaan";
         }
 
         //check email

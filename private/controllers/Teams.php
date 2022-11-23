@@ -44,7 +44,7 @@ class Teams extends Controller
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
                 $team->insert($_POST);
-                $this->redirect('teams');
+                $this->redirect('teams/?succes=Team_'.$_POST['naam'].'_is_toegevoegd');
             }else
             {
                 //errors
@@ -107,11 +107,16 @@ class Teams extends Controller
         }
 
         $teams = new Team();
+        $lid = new Team();
+        $row = $teams->where('id', $id);
         $errors = array();
+
+
         if(count($_POST) > 0)
         {
             $teams->delete($id);
-            $this->redirect('teams');
+            $this->redirect('teams/?delete=Team_'.$row[0]->naam.'_is_verwijderd_');
+
         }
 
         $crumbs[] = ['Dashboard',''];
@@ -119,7 +124,7 @@ class Teams extends Controller
         $crumbs[] = ['Delete','teams/delete'];
 
 
-        $row = $teams->where('id', $id);
+
 
         $this->view('teams.delete',[
             'row'=>$row,

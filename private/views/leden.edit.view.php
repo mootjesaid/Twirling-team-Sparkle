@@ -42,7 +42,6 @@
 
                     <?php if(count($errors) > 0):?>
                         <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
-                            <strong>Errors:</strong>
                             <?php foreach($errors as $error):?>
                                 <br><?=$error?>
                             <?php endforeach;?>
@@ -54,6 +53,14 @@
                         <div class="col-sm-4 col-md-3 flex-grow-1">
 
                             <table>
+                                <tr style="display:none;">
+                                    <td>
+                                        id
+                                    </td>
+                                    <td style="width: 300%">
+                                        <input autofocus class="my-2 form-control" value="<?=get_var('id',$row[0]->id)?>" type="text" name="id" placeholder="id">
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         Voornaam

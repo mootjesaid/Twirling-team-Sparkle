@@ -26,10 +26,6 @@ class Leden extends Controller
     public function inactive()
     {
         //code..
-        if(!Auth::logged_in())
-        {
-            $this->redirect('login');
-        }
 
         $lid = new Lid();
 
@@ -92,8 +88,14 @@ class Leden extends Controller
 
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
+                $future_timestamp = strtotime("+1 month");
+                $_POST['eind_datum'] = date('Y-m-d H:i:s', $future_timestamp);
+
+
+
                 $leden->insert($_POST);
-                $this->redirect('leden');
+                $this->redirect('leden?succes='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_toegevoegd');
+
             }else
             {
                 //errors
@@ -127,7 +129,6 @@ class Leden extends Controller
 
             if($leden->validate2($_POST))
             {
-
                 if (array_key_exists('image', $_POST)) {
                     $string = trim($_POST['image'], 'uploads');
                     $image = str_replace('/', '\\', $string);;
@@ -198,10 +199,10 @@ class Leden extends Controller
         if(count($_POST) > 0)
         {
 
-            if($lid->validate($_POST))
+            if($lid->validate2($_POST))
             {
                 $lid->update($id,$_POST);
-                $this->redirect('leden');
+                $this->redirect('leden?delete='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_gedeactiveerd');
             }else
             {
                 //errors
@@ -230,10 +231,11 @@ class Leden extends Controller
         if(count($_POST) > 0)
         {
 
-            if($lid->validate($_POST))
+            if($lid->validate2($_POST))
             {
                 $lid->update($id,$_POST);
-                $this->redirect('leden/inactive');
+                $this->redirect('leden/inactive?succes='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_geactiveerd');
+
             }else
             {
                 //errors

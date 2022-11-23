@@ -31,6 +31,32 @@
     <div class="container-bg">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
 
+        <?php
+        $succes = "";
+        if(isset($_GET['succes'])){
+            $succes = str_replace("_", " ", $_GET['succes']);
+        }
+        ?>
+
+        <?php if($succes > 0):?>
+            <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
+                <?=$succes?>
+            </div>
+        <?php endif;?>
+
+        <?php
+        $delete = "";
+        if(isset($_GET['delete'])){
+            $delete = str_replace("_", " ", $_GET['delete']);
+        }
+        ?>
+
+        <?php if($delete > 0):?>
+            <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                <?=$delete?>
+            </div>
+        <?php endif;?>
+
         <table id="tabel" class="table table-striped">
             <thead>
             <tr>

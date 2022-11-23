@@ -32,6 +32,19 @@
     <div class="container-bg">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
 
+        <?php
+        $succes = "";
+        if(isset($_GET['succes'])){
+            $succes = str_replace("_", " ", $_GET['succes']);
+        }
+        ?>
+
+        <?php if($succes > 0):?>
+            <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
+                <?=$succes?>
+            </div>
+        <?php endif;?>
+
         <table id="tabel" class="table table-striped">
             <thead>
             <tr>
@@ -42,6 +55,7 @@
                 <th>telefoonnummer</th>
                 <th>email</th>
                 <th>Datum</th>
+                <th>Eind datum</th>
                 <th>Acties</th>
             </tr>
             </thead>
@@ -65,6 +79,7 @@
                         <td><?=$row->telefoonnummer?></td>
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
+                        <td><?=get_date($row->eind_datum)?></td>
                         <td>
                             <a class="" href="<?=ROOT?>/leden/edit/<?=$row->id?>">
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>

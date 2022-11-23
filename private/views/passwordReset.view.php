@@ -51,9 +51,28 @@ use PHPMailer\PHPMailer\PHPMailer;
                     mysqli_query($con, "INSERT INTO `password_reset_temp` (`email`, `token`, `expDate`) VALUES ('" . $email . "', '" . $key . "', '" . $expDate . "');");
 
 
+
+
                     $output.='<p>Please click on the following link to reset your password.</p>';
+
                     //replace the site url
-                    $output.='<p><a href="http://twirlingteamsparkle.nl/public/passwordChange?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/Twirling-team-Sparkle/public/passwordChange?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
+                    $output.='
+                    <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+  <div style="margin:50px auto;width:70%;padding:20px 0">
+    <div style="border-bottom:1px solid #eee">
+<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Twirling Team Sparkle</a>    </div>
+    <p style="font-size:1.1em">Hi,</p>
+    <p>Klik op de link om uw wachtwoord opnieuw in te stellen</p>
+    <p><a href="http://twirlingteamsparkle.nl/public/passwordChange?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/Twirling-team-Sparkle/public/passwordChange?key=' . $key . '&email=' . $email . '&action=reset</a></p>
+    <p style="font-size:0.9em;">Met vriendelijke groet,<br />Twirling Team Sparkle</p>
+    <hr style="border:none;border-top:1px solid #eee" />
+    <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
+      <p>Twirling Team Sparkle</p>
+     
+    </div>
+  </div>
+</div>
+                    ';
                     $body = $output;
                     $subject = "Password Recovery";
 
@@ -84,26 +103,22 @@ use PHPMailer\PHPMailer\PHPMailer;
                 }
             }
             ?>
-
+<body class="bodyLogin">
 <div class="container-fluid">
 
     <form method="post" action="" name="reset">
 
-        <div class="p-4 mx-auto mr-4 shadow rounded " style="margin-top: 200px;width:100%;max-width: 340px;">
+        <div class="p-4 mx-auto mr-4 shadow rounded bg " style="margin-top: 200px;width:100%;max-width: 340px;">
             <img src="<?=ROOT?>/assets/Images/sparkle_twirling.png" class=" d-block mx-auto" style="width:200px;">
             <h3>Wachtwoord herstellen</h3>
             <?php if($succes):?>
                 <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
-
                         <?=$succes?>
-                    </span>
                 </div>
             <?php endif;?>
             <?php if($errors):?>
-                <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
-
+                <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
                     <?=$error?>
-                    </span>
                 </div>
             <?php endif;?>
             <input class="form-control" value="<?=get_var('email')?>" type="email" name="email" placeholder="Email" autofocus autocomplete="off">
@@ -113,4 +128,5 @@ use PHPMailer\PHPMailer\PHPMailer;
 
     </form>
 </div>
+</body>
 

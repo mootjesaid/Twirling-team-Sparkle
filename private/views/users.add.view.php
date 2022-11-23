@@ -4,7 +4,7 @@
 <div class="container-bg action-bar d-flex justify-content-between" style="margin-top: 100px;">
     <div class="d-flex align-items-center p-2">
         <div class="icon-container d-flex align-items-center justify-content-center">
-            <i class="icon2" data-feather="table"></i>
+            <i class="icon2" data-feather="user-plus"></i>
         </div>
         <div class="d-flex title justify-content-center">
             Medewerker toevoegen
@@ -31,7 +31,7 @@
             <div class="p-2  mr-4" style="margin-top: 50px">
                 <div class="d-flex align-items-center p-1">
                     <div class="icon-container d-flex align-items-center justify-content-center">
-                        <i class="icon2" data-feather="user-plus"></i>
+                        <i class="icon2" data-feather="file-text"></i>
                     </div>
                     <div class="d-flex title justify-content-center">
                         Gegevens

@@ -7,7 +7,7 @@
                 <i class="icon2" data-feather="table"></i>
             </div>
             <div class="d-flex title justify-content-center">
-                Klanten
+                Inactieve klanten
             </div>
         </div>
         <div class="d-flex align-items-center p-2">
@@ -24,6 +24,19 @@
 
     <div class="container-bg mt-5">
         <div class="container-fluid p-4 shadow-sm" <!--style="width: 80%; margin-left: 280px-->">
+
+        <?php
+        $succes = "";
+        if(isset($_GET['succes'])){
+            $succes = str_replace("_", " ", $_GET['succes']);
+        }
+        ?>
+
+        <?php if($succes > 0):?>
+            <div class="alert alert-success alert-dismissible fade show p-1" role="alert">
+                <?=$succes?>
+            </div>
+        <?php endif;?>
 
         <table id="tabel" class="table table-striped">
             <thead>
@@ -62,7 +75,7 @@
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
 
-                            <a class="" href="<?=ROOT?>/klanten/delete/<?=$row->id?>">
+                            <a class="" href="<?=ROOT?>/klanten/activate/<?=$row->id?>">
                                 <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
                             </a>
                         </td>
@@ -70,7 +83,9 @@
 
                 <?php endforeach;?>
             <?php else:?>
-                <h4>Er zijn op dit moment geen teams gevonden</h4>
+                <div class="d-flex justify-content-center">
+                    <h4>Er zijn op dit moment geen klanten gevonden</h4>
+                </div>
             <?php endif;?>
 
             </tbody>

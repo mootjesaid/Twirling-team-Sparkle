@@ -32,7 +32,7 @@
                     $string = Auth::getImage();
                     $image = substr($string,8);
                     ?>
-                    <img src="uploads/<?=$image?>" class=" c-avatar__image d-block rounded-circle">
+                    <img src="<?php echo "http://twirlingteamsparkle.nl/public/uploads/".$image ?>" class=" c-avatar__image d-block rounded-circle">
                     <span class='c-avatar__status'></span>
                 </div>
             </div>

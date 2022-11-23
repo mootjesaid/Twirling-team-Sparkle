@@ -92,7 +92,7 @@ class Klanten extends Controller
                 $_POST['datum'] = date("Y-m-d H:i:s");
 
                 $klant->insert($_POST);
-                $this->redirect('klanten');
+                $this->redirect('klanten/?succes='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_toegevoegd');
             }else
             {
                 //errors
@@ -188,7 +188,7 @@ class Klanten extends Controller
             if($klant->validate2($_POST))
             {
                 $klant->update($id,$_POST);
-                $this->redirect('leden');
+                $this->redirect('klanten/?delete='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_gedeactiveerd');
             }else
             {
                 //errors
@@ -199,6 +199,38 @@ class Klanten extends Controller
         $row = $klant->where('id', $id);
 
         $this->view('klanten.delete',[
+            'row'=>$row,
+            'errors'=>$errors,
+        ]);
+
+    }
+
+    public function activate($id = null)
+    {
+        if(!Auth::logged_in())
+        {
+            $this->redirect('login');
+        }
+
+        $klant = new Klant();
+        $errors = array();
+        if(count($_POST) > 0)
+        {
+
+            if($klant->validate2($_POST))
+            {
+                $klant->update($id,$_POST);
+                $this->redirect('klanten/inactive/?succes='.$_POST['voornaam'].'_'.$_POST['achternaam'].'_is_geactiveerd');
+            }else
+            {
+                //errors
+                $errors = $klant->errors;
+            }
+        }
+
+        $row = $klant->where('id', $id);
+
+        $this->view('klanten.activate',[
             'row'=>$row,
             'errors'=>$errors,
         ]);

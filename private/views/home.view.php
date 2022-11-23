@@ -16,71 +16,66 @@
     </div>
 </div>
 
-<div class="container-bg1 mt-3">
+<div class="container-bg1 mt-4">
 
     <div class="d-flex justify-content-between">
 
         <div class="statusCardParent col-md-3 shadow-sm bg-body">
             <div class="statusCard p-4 text-left">
-                <div class="fs-6 text-red-600">
-                    Succesvolle leveringen
+                <div class="fs-4 text-red-600">
+                    Aantal leden
                 </div>
-                <div class="fs-5 text fw-bolder ">
-                    {{$designated}}
-                </div>
-            </div>
-        </div>
-
-        <div class="statusCardParent col-md-3 shadow-sm bg-body">
-            <div class="statusCard p-4 text-left">
-                <div class="fs-6 text-red-600">
-                    Succesvolle leveringen
-                </div>
-                <div class="fs-5 text fw-bolder ">
-                    {{$designated}}
+                <div class="aantal fs-3 text fw-bolder ">
+                    <?php echo count($leden) ?>
                 </div>
             </div>
         </div>
 
         <div class="statusCardParent col-md-3 shadow-sm bg-body">
             <div class="statusCard p-4 text-left">
-                <div class="fs-6 text-red-600">
-                    Aantal artikelen
+                <div class="fs-4 text-red-600">
+                    Aantal teams
                 </div>
-                <div class="fs-5 text fw-bolder ">
-                    {{$products}}
+                <div class="aantal fs-3 text fw-bolder ">
+                    <?php echo count($teams) ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="statusCardParent col-md-3 shadow-sm bg-body">
+            <div class="statusCard p-4 text-left">
+                <div class="fs-4 text-red-600">
+                    Aantal klanten
+                </div>
+                <div class="aantal fs-3 text fw-bolder ">
+                    <?php echo count($klanten) ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container-bg1 d-flex justify-content-between mt-3">
-    <div class="align-items-center p-2">
-        <div class="title d-flex align-items-center justify-content-center">
-            Klanten
+<div class="container-bg1 d-flex content-between mt-4">
+
+    <div class="chart me-4 align-items-center">
+        <div class="title pt-4 d-flex align-items-center justify-content-center">
+            Leden
         </div>
-        <div class="chart d-flex title justify-content-center">
+        <div class=" d-flex title align-items-center  justify-content-center">
             <canvas id="leden"></canvas>
         </div>
     </div>
-    <div class="align-items-center p-2 ">
-        <div class="title d-flex align-items-center justify-content-center">
+
+    <div class="chart ms-4 align-items-center">
+        <div class="title pt-4 d-flex align-items-center justify-content-center">
             Klanten
         </div>
-        <div class="chart d-flex title justify-content-center">
-
+        <div class=" d-flex title align-items-center  justify-content-center">
             <canvas id="klanten"></canvas>
         </div>
     </div>
 </div>
 
-<div class="container-bg1 mt-3 d-flex justify-content-between">
-    <div class="container-chart">
-
-    </div>
-
-</div>
 
 
 
@@ -91,16 +86,16 @@
         var ctx = document.getElementById("leden").getContext('2d');
         var data = {
             datasets: [{
-                data: [10, 20],
+                data: [<?= count($active) ?>, <?= count($inactive) ?>],
                 backgroundColor: [
-                    '#3c8dbc',
-                    '#f56954',
+                    '#DEB900',
+                    '#120D91',
 
                 ],
             }],
             labels: [
-                'Request',
-                'Layanan',
+                'Actieve leden',
+                'Inactieve leden',
             ]
         };
         var myDoughnutChart = new Chart(ctx, {
@@ -120,15 +115,15 @@
         var ctx_2 = document.getElementById("klanten").getContext('2d');
         var data_2 = {
             datasets: [{
-                data: [10, 20, 30],
+                data: [<?= count($active_klanten) ?>, <?= count($inactive_klanten) ?>,],
                 backgroundColor: [
-                    '#f56954',
-                    '#f39c12',
+                    '#312ADE',
+                    '#E2CA4F',
                 ],
             }],
             labels: [
-                'Layanan',
-                'Problem'
+                'Actieve klanten',
+                'Inactieve klanten'
             ]
         };
         var myDoughnutChart_2 = new Chart(ctx_2, {

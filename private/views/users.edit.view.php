@@ -33,7 +33,7 @@
                 <div class="p-2  mr-4" style="margin-top: 50px">
                     <div class="d-flex align-items-center p-1">
                         <div class="icon-container d-flex align-items-center justify-content-center">
-                            <i class="icon2" data-feather="user-plus"></i>
+                            <i class="icon2" data-feather="file-text"></i>
                         </div>
                         <div class="d-flex title justify-content-center">
                             Gegevens
@@ -41,7 +41,6 @@
                     </div>
                     <?php if(count($errors) > 0):?>
                         <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
-                            <strong>Errors:</strong>
                             <?php foreach($errors as $error):?>
                                 <br><?=$error?>
                             <?php endforeach;?>
@@ -59,6 +58,14 @@
                                     </td>
                                     <td style="width: 300%">
                                         <input autofocus class="my-2 form-control" value="<?=get_var('id',$row[0]->id)?>" type="text" name="id" placeholder="id">
+                                    </td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td>
+                                        image
+                                    </td>
+                                    <td style="width: 300%">
+                                        <input autofocus class="my-2 form-control" value="<?=get_var('image',$row[0]->image)?>" type="text" name="image" placeholder="image">
                                     </td>
                                 </tr>
                                 <tr>
@@ -152,6 +159,3 @@
         }
     </script>
     <?php $this->view('includes/footer')?>
-
-
-
