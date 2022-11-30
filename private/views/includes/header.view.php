@@ -29,10 +29,9 @@
             <div class="ms-auto p-2">
                 <div class='c-avatar'>
                     <?php
-                    $string = Auth::getImage();
-                    $image = substr($string,8);
+                    $image = get_image(Auth::getImage());
                     ?>
-                    <img src="<?php echo "http://twirlingteamsparkle.nl/public/uploads/".$image ?>" class=" c-avatar__image d-block rounded-circle">
+                    <img src="<?= $image ?>" class=" c-avatar__image d-block rounded-circle">
                     <span class='c-avatar__status'></span>
                 </div>
             </div>
@@ -43,6 +42,7 @@
                             <?=Auth::getVoornaam() ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end mt-4" aria-labelledby="navbarDropdownMenuLink" style="background: #EEEEEE"  >
+                            <a class="dropdown-item" href="<?=ROOT?>/users/edit/<?=Auth::getid()?>">Profiel</a>
                             <a class="dropdown-item" href="<?=ROOT?>/logout">Logout</a>
                         </div>
                     </li>

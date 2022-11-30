@@ -15,7 +15,7 @@ class Klanten extends Controller
 
         $klant = new Klant();
 
-        $data = $klant->where('actief', 'ja');
+        $data = $klant->where('actief', 'actief');
 
         $this->view('klanten',[
             'rows'=>$data,
@@ -33,7 +33,7 @@ class Klanten extends Controller
 
         $klant = new Klant();
 
-        $data = $klant->where('actief', 'nee');
+        $data = $klant->where('actief', 'inactief');
 
         $this->view('klanten.inactive',[
             'rows'=>$data,
@@ -121,41 +121,24 @@ class Klanten extends Controller
 
             if($klant->validate2($_POST))
             {
+                $row = $klant->where('id', $id);
 
                 if (array_key_exists('image', $_POST)) {
                     $string = trim($_POST['image'], 'uploads');
-                    $image = str_replace('/', '\\', $string);;
-                    $path = $_SERVER['DOCUMENT_ROOT'] . '/Twirling-team-Sparkle/public/uploads/'.$image;
-                    $filename = realpath($path);
-                    if (file_exists($filename)) {
-                        unlink($filename);
-                        echo 'File ' . $filename . ' is verwijderd';
-                    } else {
-                        echo $filename . ', afbeelding bestaat niet';
+                    $file_name = $string;
+                    $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
+                    $file_delete =  "$base_dir/public/uploads/$file_name";
+
+                    if (file_exists($file_delete == $row[0]->image)) {
+                        unlink($file_delete);
+                        addImage();
+                    } elseif (count($_FILES) > 0 ) {
+                        addImage();
+
                     }
                 }
 
-                if(count($_FILES) > 0)
-                {
 
-//                    //we have an image
-                    $allowed[] = "image/jpeg";
-                    $allowed[] = "image/png";
-
-                    if($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed))
-                    {
-                        $folder = "uploads";
-                        if(!file_exists($folder)){
-                            mkdir($folder);
-                        }
-                        $uniquesavename = time().uniqid(rand());
-                        $destination = $folder. "/" . $uniquesavename . '.jpg';;
-                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-                        $_POST['image'] = $destination;
-
-                    }
-
-                }
                 $klant->update($id,$_POST);
                 $this->redirect('klanten');
             }else

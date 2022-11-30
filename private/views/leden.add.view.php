@@ -39,9 +39,8 @@
                 </div>
                 <?php if(count($errors) > 0):?>
                     <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
-                        <strong>Errors:</strong>
                         <?php foreach($errors as $error):?>
-                            <br><?=$error?>
+                            <?=$error?><br>
                         <?php endforeach;?>
                         </span>
                     </div>
@@ -124,22 +123,28 @@
                     </div>
 
                     <div class="align-items-center p-5">
-                        <img src="<?=$image?>" class="border border-primary d-block mx-auto rounded-circle " style="width:150px;">
+                        <img id="thumb" src="<?=$image?>" class="border border-primary d-block mx-auto rounded-circle " style="width:150px; height: 150px">
                         <br>
                         <div class="text-center">
                             <label for="image_browser" class="imagebtn">
-                                <input onchange="display_image_name(this.files[0].name)" id="image_browser" type="file" name="image" style="display: none;">
+                                <input  id="image_browser" type="file"  onchange="preview()" name="image" style="display: none;">
                                 Afbeelding zoeken
                             </label>
                             <br>
 
                         </div>
                     </div>
+
                 </div>
             </div>
         </form>
 
     </div>
+    <script>
+        function preview() {
+            thumb.src=URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
 
     <?php $this->view('includes/footer')?>
 

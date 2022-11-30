@@ -48,6 +48,7 @@ class User extends Model
             $this->errors['email'] = "Dit e-mail is niet beschikbaar ";
         }
 
+
         //check rol
         $rollen = ['admin','medewerker'];
         if(empty($DATA['rol']) || !in_array($DATA['rol'], $rollen))

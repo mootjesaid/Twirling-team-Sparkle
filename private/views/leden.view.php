@@ -97,7 +97,7 @@
                             echo "#4BB543";
                         } ?>" ><?=$row->actief?></td>
                         <td>
-                            <a class="" href="<?=ROOT?>/leden/edit/?<?=$row->id?>">
+                            <a class="" href="<?=ROOT?>/leden/edit/<?=$row->id?>">
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
 

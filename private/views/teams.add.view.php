@@ -24,7 +24,7 @@
 <div class="container-bg">
     <form class="shadow-sm" method="post">
 
-        <div class="p-2  mr-4" style="margin-top: 50px; width: 100%">
+        <div class="p-2  mr-4 pb-2" style="margin-top: 50px; width: 100%">
             <div class="d-flex align-items-center p-0">
                 <div class="icon-container d-flex align-items-center justify-content-center">
                     <i class="icon2" data-feather="file-text"></i>
@@ -33,16 +33,18 @@
                     Gegevens
                 </div>
             </div>
+            <div class="pt-3">
+
             <?php if(count($errors) > 0):?>
-                <div class="alertA alert-warning alert-dismissible fade show p-1" role="alert">
-                    <strong>Errors:</strong>
+                <div class="alert alert-warning alert-dismissible fade show p-1" role="alert">
                     <?php foreach($errors as $error):?>
-                        <br><?=$error?>
+                        <?=$error?><br>
                     <?php endforeach;?>
                     </span>
                 </div>
             <?php endif;?>
-            <div class=" pt-3 ps-0  action-bar d-flex justify-content-between">
+            </div>
+            <div class=" pt-2 ps-0  action-bar d-flex justify-content-between">
 
                 <div class="col-sm-4 col-md-2 flex-grow-1">
 

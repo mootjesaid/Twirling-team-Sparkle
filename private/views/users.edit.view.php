@@ -123,12 +123,16 @@
                             </div>
                         </div>
 
+                        <script>
+
+                        </script>
+
                         <div class="align-items-center p-5">
-                            <img src="<?=$image?>" class="border border-primary d-block mx-auto rounded-circle " style="width:150px;">
+                            <img id="thumb" src="<?=$image?>" class="border border-primary d-block mx-auto rounded-circle " style="width:150px; height: 150px">
                             <br>
                             <div class="text-center">
                                 <label for="image_browser" class="imagebtn">
-                                    <input onchange="display_image_name(this.files[0].name)" id="image_browser" type="file" name="image" style="display: none;">
+                                    <input  id="image_browser" type="file"  onchange="preview()" name="image" style="display: none;">
                                     Afbeelding zoeken
                                 </label>
                                 <br>
@@ -150,12 +154,9 @@
             </a>
         </div>
     <?php endif; ?>
-
-
     <script>
-        function display_image_name(file_name)
-        {
-            document.querySelector(".file_info").innerHTML = '<b>Selected file:</b><br>' + file_name;
+        function preview() {
+            thumb.src=URL.createObjectURL(event.target.files[0]);
         }
     </script>
     <?php $this->view('includes/footer')?>

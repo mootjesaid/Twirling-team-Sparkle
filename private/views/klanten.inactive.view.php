@@ -76,7 +76,7 @@
                             </a>
 
                             <a class="" href="<?=ROOT?>/klanten/activate/<?=$row->id?>">
-                                <button class="buttondelete"><i class="icon-3" data-feather="trash"></i></button>
+                                <button class="buttonadd"><i class="icon-3" data-feather="plus-circle"></i></button>
                             </a>
                         </td>
                     </tr>

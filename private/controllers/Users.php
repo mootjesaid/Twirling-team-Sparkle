@@ -18,7 +18,7 @@ class Users extends Controller
 
         $user = new User();
 
-        $data = $user->findAll();
+        $data = $user->whereNot('id', Auth::id());
         $crumbs[] = ['Home','home'];
         $crumbs[] = ['Users','users'];
 
@@ -111,6 +111,8 @@ class Users extends Controller
 
         if (count($_POST) > 0 && Auth::access('admin')) {
 
+
+
             if ($user->validate2($_POST)) {
 //                echo $string = trim('16691291051072302474637ce391428d6.jpg', 'uploads');
 //                echo "<br>";
@@ -139,13 +141,15 @@ class Users extends Controller
                 echo '<br>';
                 echo unlink($file_delete);*/
 
+                $row = $user->where('id', $id);
+
                 if (array_key_exists('image', $_POST)) {
                     $string = trim($_POST['image'], 'uploads');
                     $file_name = $string;
                     $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
                     $file_delete =  "$base_dir/public/uploads/$file_name";
 
-                    if (file_exists($file_delete)) {
+                    if (file_exists($file_delete == $row[0]->image)) {
                         unlink($file_delete);
                         addImage();
                     } elseif (count($_FILES) > 0 ) {
@@ -154,6 +158,17 @@ class Users extends Controller
                     }
                 }
 
+                unset($_SESSION['USER']->rol);
+                $_SESSION['USER']->rol = $_POST['rol'];
+
+                unset($_SESSION['USER']->voornaam);
+                $_SESSION['USER']->voornaam = $_POST['voornaam'];
+
+                unset($_SESSION['USER']->achternaam);
+                $_SESSION['USER']->achternaam = $_POST['achternaam'];
+
+                unset($_SESSION['USER']->image);
+                $_SESSION['USER']->image = $_POST['image'];
 
                 $user->update($id, $_POST);
                 $this->redirect('users');
@@ -164,7 +179,6 @@ class Users extends Controller
         }
 
         $row = $user->where('id', $id);
-
         if(Auth::access('admin')){
 
             $this->view('users.edit',[

@@ -17,6 +17,7 @@ $(document).ready(function () {
 
 });
 
+
 $(document).ready(function () {
     $('#tabel2').DataTable( {
         "language": {

@@ -55,6 +55,14 @@
                             <table>
                                 <tr style="display:none;">
                                     <td>
+                                        image
+                                    </td>
+                                    <td style="width: 300%">
+                                        <input autofocus class="my-2 form-control" value="<?=get_var('image',$row[0]->image)?>" type="text" name="image" placeholder="image">
+                                    </td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td>
                                         id
                                     </td>
                                     <td style="width: 300%">
@@ -114,19 +122,20 @@
                             </table>
 
                             <div class="container-btn d-flex p-2 justify-content-between float-end">
-                                <a href="<?=ROOT?>/klanten">
+                                <a href="<?=ROOT?>/leden">
                                     <button type="button" class="dangerbtn">Annuleer</button>
                                 </a>
+
                                 <button class="submitbtn">Opslaan</button>
                             </div>
                         </div>
 
                         <div class="align-items-center p-5">
-                            <img src="<?=$image?>" class="border border-primary d-block mx-auto rounded-circle " style="width:150px;">
+                            <img id="thumb" src="<?=$image?>" class="border border-primary d-block mx-auto rounded-circle " style="width:150px; height: 150px">
                             <br>
                             <div class="text-center">
                                 <label for="image_browser" class="imagebtn">
-                                    <input onchange="display_image_name(this.files[0].name)" id="image_browser" type="file" name="image" style="display: none;">
+                                    <input  id="image_browser" type="file"  onchange="preview()" name="image" style="display: none;">
                                     Afbeelding zoeken
                                 </label>
                                 <br>
@@ -139,21 +148,20 @@
         </div>
     <?php else: ?>
 
-        <div style="text-align: center;">
-            <h3>That school was not found!</h3>
+        <div style="text-align: center; background: transparent">
+            <h3>Lid niet gevonden</h3>
             <div class="clearfix"></div>
             <br><br>
             <a href="<?=ROOT?>/leden">
-                <input class="btn btn-danger" type="button" value="Annuleer">
+                <input class="dangerbtn" type="button" value="Annuleer">
             </a>
         </div>
     <?php endif; ?>
 
 
 <script>
-    function display_image_name(file_name)
-    {
-        document.querySelector(".file_info").innerHTML = '<b>Selected file:</b><br>' + file_name;
+    function preview() {
+        thumb.src=URL.createObjectURL(event.target.files[0]);
     }
 </script>
 <?php $this->view('includes/footer')?>
