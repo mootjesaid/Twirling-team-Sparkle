@@ -127,20 +127,32 @@ class Klanten extends Controller
                     $string = trim($_POST['image'], 'uploads');
                     $file_name = $string;
                     $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
+                    $uploadedFile =  $_FILES['image']['name'];
                     $file_delete =  "$base_dir/public/uploads/$file_name";
 
-                    if (file_exists($file_delete == $row[0]->image)) {
-                        unlink($file_delete);
-                        addImage();
-                    } elseif (count($_FILES) > 0 ) {
-                        addImage();
 
+
+                    if (count($_FILES) > 0){
+                        if (empty($uploadedFile)){
+
+                        }
+                        else{
+                            unlink($file_delete);
+                            addImage();
+                        }
                     }
+
                 }
 
+                $row = $klant->where('id', $id);
 
                 $klant->update($id,$_POST);
-                $this->redirect('klanten');
+                if ($_GET['status'] == 'active'){
+                    $this->redirect('klanten');
+                } else{
+                    $this->redirect('klanten/inactive');
+                }
+
             }else
             {
                 //errors

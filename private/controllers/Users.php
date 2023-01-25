@@ -141,34 +141,38 @@ class Users extends Controller
                 echo '<br>';
                 echo unlink($file_delete);*/
 
-                $row = $user->where('id', $id);
+                $row = $user->where('id', Auth::getId());
 
                 if (array_key_exists('image', $_POST)) {
                     $string = trim($_POST['image'], 'uploads');
                     $file_name = $string;
                     $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
+                    $uploadedFile =  $_FILES['image']['name'];
                     $file_delete =  "$base_dir/public/uploads/$file_name";
 
-                    if (file_exists($file_delete == $row[0]->image)) {
-                        unlink($file_delete);
-                        addImage();
-                    } elseif (count($_FILES) > 0 ) {
-                        addImage();
 
+
+                    if (count($_FILES) > 0){
+                        if (empty($uploadedFile)){
+
+                        } elseif ($_POST['id'] == $row[0]->id)
+                        {
+                            unlink($file_delete);
+                            addImage();
+
+                            unset($_SESSION['USER']->image);
+                            $_SESSION['USER']->image = $_POST['image'];
+                        }
+                        else{
+                            unlink($file_delete);
+                            addImage();
+                        }
                     }
+
                 }
 
-                unset($_SESSION['USER']->rol);
-                $_SESSION['USER']->rol = $_POST['rol'];
 
-                unset($_SESSION['USER']->voornaam);
-                $_SESSION['USER']->voornaam = $_POST['voornaam'];
 
-                unset($_SESSION['USER']->achternaam);
-                $_SESSION['USER']->achternaam = $_POST['achternaam'];
-
-                unset($_SESSION['USER']->image);
-                $_SESSION['USER']->image = $_POST['image'];
 
                 $user->update($id, $_POST);
                 $this->redirect('users');

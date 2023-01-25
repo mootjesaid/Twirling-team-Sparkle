@@ -114,7 +114,11 @@
                             </table>
 
                             <div class="container-btn d-flex p-2 justify-content-between float-end">
-                                <a href="<?=ROOT?>/klanten">
+                                <a href="<?php if ($_GET['status'] == 'inactive'){
+                                    echo ROOT."/klanten/inactive";
+                                } else{
+                                    echo ROOT."/klanten";
+                                }?>">
                                     <button type="button" class="dangerbtn">Annuleer</button>
                                 </a>
                                 <button class="submitbtn">Opslaan</button>

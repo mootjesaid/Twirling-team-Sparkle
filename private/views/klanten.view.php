@@ -90,7 +90,7 @@
                         <td><?=$row->email?></td>
                         <td><?=get_date($row->datum)?></td>
                         <td>
-                            <a class="" href="<?=ROOT?>/klanten/edit/<?=$row->id?>">
+                            <a class="" href="<?=ROOT?>/klanten/edit/<?=$row->id?>?status=active">
                                 <button class="buttonedit"><i class="icon-3" data-feather="edit"></i></button>
                             </a>
 

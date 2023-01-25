@@ -6,11 +6,10 @@
                 <div class=" d-flex flex-row m-3">
                     <div class="pe-3  ">
                         <?php
-                        $string = Auth::getImage();
-                        $image = substr($string,8);
+                        $image = get_image(Auth::getImage());
                         ?>
                         <div class='c-avatar pt-1 '>
-                            <img src="<?php echo "http://twirlingteamsparkle.nl/public/uploads/".$image ?>" class=" c-avatar__image  d-block rounded-circle">
+                            <img src="<?= $image ?>" class=" c-avatar__image  d-block rounded-circle">
                             <span class='c-avatar__status'></span>
                         </div>
                     </div>

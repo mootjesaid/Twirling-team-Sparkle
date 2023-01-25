@@ -152,15 +152,21 @@ class Leden extends Controller
                     $string = trim($_POST['image'], 'uploads');
                     $file_name = $string;
                     $base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
-                    $file_delete = "$base_dir/public/uploads/$file_name";
+                    $uploadedFile =  $_FILES['image']['name'];
+                    $file_delete =  "$base_dir/public/uploads/$file_name";
 
-                    if (file_exists($file_delete == $row[0]->image)) {
-                        unlink($file_delete);
-                        addImage();
-                    } elseif (count($_FILES) > 0) {
-                        addImage();
 
+
+                    if (count($_FILES) > 0){
+                        if (empty($uploadedFile)){
+
+                        }
+                        else{
+                            unlink($file_delete);
+                            addImage();
+                        }
                     }
+
                 }
 
 
